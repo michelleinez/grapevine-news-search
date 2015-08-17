@@ -12,3 +12,46 @@ for (var i = 0; i < country_codes.length; i++)
 {
 	sockets[country_codes[i]] = proxysocket.create("localhost", base_socks_port + 1 + i);
 }
+
+
+function get_json_from_api(host, path, socket, callback)
+{
+	if (socket === undefined)
+	{
+		console.log('socket was undefined');
+		return;
+	}
+
+	var response_string = '';
+
+	socket.on('data', function (data) {
+		response_string += data;
+	    // Receive data
+	});
+
+	socket.on('end', function(){
+		var json_string = response_string.replace(/(\n|.|\r)*?(?={)/m, '');
+	 	var json = JSON.parse(json_string);
+	 	callback(json);
+	});
+
+	socket.connect(host, 80, function () {
+	    console.log('connected');
+		socket.write('GET ' + path + ' HTTP/1.0\n\n');
+	    // Connected
+	});
+}
+
+// example of how to use
+
+/*
+get_json_from_api(
+	'maps.googleapis.com',
+	'/maps/api/elevation/json?locations=39.7391536,-104.9847034', 
+	socket, 
+	function(result){
+		console.log(result.results);
+	});
+*/
+
+

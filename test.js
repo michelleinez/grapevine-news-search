@@ -1,41 +1,111 @@
 var proxysocket = require('proxysocket');
-var http = require('http');
-var socket0 = proxysocket.create('localhost', 9051);
-var socket1 = proxysocket.create('localhost', 9052);
+
+//*/
+var socket = proxysocket.create('localhost', 9050);
+
+function get_json_from_api(host, path, socket, callback)
+{
+	if (socket === undefined)
+	{
+		console.log('socket was undefined');
+		return;
+	}
+
+	var response_string = '';
+
+	socket.on('data', function (data) {
+		response_string += data;
+	    // Receive data
+	});
+
+	socket.on('end', function(){
+		var json_string = response_string.replace(/(\n|.|\r)*?(?={)/m, '');
+	 	var json = JSON.parse(json_string);
+	 	callback(json);
+	});
+
+	socket.connect(host, 80, function () {
+	    console.log('connected');
+		socket.write('GET ' + path + ' HTTP/1.0\n\n');
+	    // Connected
+	});
+}
+
+get_json_from_api(
+	'maps.googleapis.com',
+	'/maps/api/elevation/json?locations=39.7391536,-104.9847034', 
+	socket, 
+	function(result){
+		console.log(result.results);
+	});
+/*/
+
+var agent = proxysocket.createAgent('localhost', 9050);
+var socket = agent.createConnection({host:'maps.googleapis.com', port:80}, function(){
+	socket.write('GET /maps/api/elevation/json?locations=39.7391536,-104.9847034 HTTP/1.0\n\n');
+	console.log("connected");
+});
+socket.on('data', function(data) {
+	console.log('data\n' + data);
+});
+
+/*/
+/*/
+var request = http.request({
+    host: 'bitmesh.network',
+    port: 80,
+    agent: agent
+}, function(response){
+  console.log('STATUS: ' + response.statusCode);
+  console.log('HEADERS: ' + JSON.stringify(response.headers));
+  response.setEncoding('utf8');
+  response.on('data', function (chunk) {
+    console.log('BODY: ' + chunk);
+  });
+});
+
+request.write('data\n');
+request.write('data\n');
+request.end();
+/*/
 
 //var agent = proxysocket.createAgent();
 //var socket = agent.createConnection({host:'localhost', port:9050});
-
 /*
-http.request({
-    host: 'https://www.google.com',
-//    agent: agent
+var request = http.request({
+    host: 'www.google.com',
+    port: 80,
+}, function(response){
+	console.log(response);
 });
-//*/
 
-socket0.connect('bitmesh.network', 80, function () {
+request.end();*/
+/*
+var agent = proxysocket.createAgent('localhost', 9050);
+
+var request = http.request({
+    host: 'www.google.com',
+    port: 80,
+    agent: agent
+}, function(response){
+	console.log(response);
+});
+
+request.end();
+
+socket.connect('bitmesh.network', 80, function () {
     console.log('connected');
-    socket0.write('get\n\n');
+    socket.write('get\n\n');
     // Connected
 });
 
-socket0.on('data', function (data) {
+socket.on('data', function (data) {
  	console.log('data' + data);  
     // Receive data
 });
 
-socket0.on('error', function (error) {
+socket.on('error', function (error) {
 	console.log('error ' + error);
 });
-
-socket1.connect('bitmesh.network', 443, function () {
-    console.log('connected');
-    socket1.write('get\n\n');
-    // Connected
-});
-
-socket1.on('data', function (data) {
- 	console.log('data' + data);  
-    // Receive data
-});
+/*/
 
