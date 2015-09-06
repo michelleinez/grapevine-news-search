@@ -1,5 +1,10 @@
 var proxysocket = require('proxysocket');
 
+var API_KEY = 'AIzaSyBfnsOwVWHgYMZeqILWCoUwjJyomzpsV_Y';
+var search_query = 'search term (replace later)';
+var from_language = 'en';
+var to_language = 'fr';
+
 //*/
 var socket = proxysocket.create('localhost', 9050);
 
@@ -32,8 +37,8 @@ function get_json_from_api(host, path, socket, callback)
 }
 
 get_json_from_api(
-	'maps.googleapis.com',
-	'/maps/api/elevation/json?locations=39.7391536,-104.9847034', 
+	'http://www.googleapis.com',
+	'/language/translate/v2?key='+API_KEY+'&q='+search_query+'&source='+from_language+'&target='+to_language,
 	socket, 
 	function(result){
 		console.log(result.results);
