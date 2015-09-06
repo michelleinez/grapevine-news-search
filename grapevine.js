@@ -2,7 +2,6 @@
 var proxysocket = require("proxysocket");
 
 
-
 var grapevine = {
 	
 	country_codes: ["be","pl","ca","za","vn","uz","ua","tw","tr","th","sk", 
@@ -12,15 +11,12 @@ var grapevine = {
     "br","bg","au","at","ar","aq","ao","ae","nl","de","fr"],
 	
 	base_socks_port:9050,
-	sockets: {},
-	init: function()
-	{
-
-	},
+	API_KEY: 'AIzaSyBfnsOwVWHgYMZeqILWCoUwjJyomzpsV_Y',
 	get_json_from_api: function(host, path, socket, callback)
 	{
 		if (socket === undefined)
 		{
+			socket = proxysocket.create('localhost', 9050);
 			console.log('socket was undefined');
 			return;
 		}
@@ -36,8 +32,10 @@ var grapevine = {
 
 		socket.on('end', function(){
 			var json_string = response_string.replace(/(\n|.|\r)*?(?={)/m, '');
-		 	var json = JSON.parse(json_string);
-		 	callback(json);
+			console.log(json_string);
+		 	//var json = JSON.parse(json_string);
+		 	console.log("parsed json");
+		 	//callback(json);
 		});
 
 		socket.on('error', function(error){
@@ -46,22 +44,29 @@ var grapevine = {
 
 		socket.connect(host, 80, function () {
 		    console.log('connected');
-			socket.write('GET ' + path + ' HTTP/1.0\n\n');
+		    var request = 'GET ' + path + ' HTTP/1.0\n\n';
+		    console.log(request); 
+			socket.write(request);
 		    // Connected
 		});
 	},
 	get_socket_for_country: function(country_code)
 	{
+		var agent = proxysocket.createAgent('localhost', 9050);
+
+		return proxysocket.create('localhost', 9050);
+		/*
 		int idx = this.country_codes.indexOf(country_code);
 		if (idx >= 0)
 		{
 			return proxysocket.create('localhost', this.base_socks_port + idx);
 		}
+		*/
 	}
 };
 
-console.log(grapevine.country_codes.indexOf("be"));
-console.log(grapevine.country_codes.indexOf("bss"));
+module.exports = grapevine;
+/*
 //grapevine.init();
 var socket = proxysocket.create('localhost', 9050);
 
@@ -72,7 +77,7 @@ grapevine.get_json_from_api(
 	function(result){
 		console.log(result.results);
 	});
-
+*/
 // example of how to use
 
 /*
