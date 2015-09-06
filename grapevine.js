@@ -42,6 +42,39 @@ function get_json_from_api(host, path, socket, callback)
 	});
 }
 
+
+
+//https call to google translate API
+var https = require('https');
+
+function translate(search_query, from_language, to_language){
+	var options = {
+	host: 'www.googleapis.com',
+	  port: 443,
+	  path: '/language/translate/v2?key='+API_KEY+'&source='+from_language+'&target='+to_language+'&q='+search_query,
+	  method: 'GET'
+	};
+
+	console.log(options);
+
+	var req = https.request(options, function(res) {
+	  console.log("statusCode: ", res.statusCode);
+	  console.log("headers: ", res.headers);
+
+	  res.on('data', function(d) {
+	    process.stdout.write(d);
+	  });
+	});
+	req.end();
+
+	req.on('error', function(e) {
+	  console.error(e);
+	});
+};
+
+
+
+
 // example of how to use
 
 /*
