@@ -1,9 +1,19 @@
 //  grapevine setup
-var proxysocket = require("proxysocket");
 var https = require('https');
+var socks = require('socksv5');
 
 var grapevine = {
-	
+	countries: {
+		be: {
+			country_code:'be',
+			country_name:'Beryllium',
+			language_code:'??',
+			language_name:'Basilisk'
+		},
+		pl: {
+			//...
+		}
+	},
 	country_codes: ["be","pl","ca","za","vn","uz","ua","tw","tr","th","sk", 
     "sg","se","sd","sa","ru","ro","pt","ph","pa","nz","np","no","my","mx", 
     "md","lv","lu","kr","jp","it","ir","il","ie","id","hr","hk","gr","gi", 
@@ -64,28 +74,67 @@ var grapevine = {
 		*/
 	},
 	//https call to google translate API
-	translate: function(search_query, from_language, to_language){
+	translate: function(search_query, from_language, to_language, callback){
 		var options = {
-		host: 'www.googleapis.com',
-		  port: 443,
-		  path: '/language/translate/v2?key='+this.API_KEY+'&source='+from_language+'&target='+to_language+'&q='+search_query,
-		  method: 'GET'
+			host: 'www.googleapis.com',
+			port: 443,
+			path: '/language/translate/v2?key='+this.API_KEY+'&source='+from_language+'&target='+to_language+'&q='+search_query,
+			method: 'GET'
 		};
 
-		console.log(options);
+		//console.log(options);
 
 		var req = https.request(options, function(res) {
-		  console.log("statusCode: ", res.statusCode);
-		  console.log("headers: ", res.headers);
-
-		  res.on('data', function(d) {
-		    process.stdout.write(d);
-		  });
+//			console.log("statusCode: ", res.statusCode);
+//			console.log("headers: ", res.headers);
+			var response_string = '';
+			res.on('data', function(d) {
+				response_string += d;
+			});
+			res.on('end', function() {
+				callback(JSON.parse(response_string))
+			});
 		});
 		req.end();
 
 		req.on('error', function(e) {
-		  console.error(e);
+			console.error(e);
+		});
+	},
+	get_news_about: function(search_query, country_code, callback){
+		var host = 'ajax.googleapis.com';
+		var path = '/ajax/services/search/news?v=1.0&q=' + search_query;
+//		var torPort = this.base_socks_port + this.country_codes.indexOf(country_code);
+		var torPort = 9050;
+		console.log('getting news about ' + search_query + ' from country ' + country_code);
+		var socksConfig = {
+		  proxyHost: '127.0.0.1',
+		  proxyPort: torPort,
+		  auths: [ socks.auth.None() ]
+		};
+
+		https.get({
+		  host: host,
+		  port: 443,
+		  method: 'GET',
+		  path: path,
+		  agent: new socks.HttpsAgent(socksConfig)
+		}, function(res) {
+			res.resume();
+			var response_string = '';
+			res.on('data', function(d) {
+				response_string += d;
+			});
+			res.on('end', function() {
+				callback(JSON.parse(response_string));
+//				console.log(response_string);
+			});
+		});
+	},
+	simulate_country: function(search_query, country_code)
+	{
+		this.translate(search_query, 'en', 'fr', function(result){
+			console.log(result);
 		});
 	}
 };

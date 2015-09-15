@@ -5,9 +5,9 @@ var search_query = 'monkeys';
 var from_language = 'en';
 var to_language = 'fr';
 
-grapevine.translate(search_query, from_language, to_language);
-
-
+//grapevine.translate(search_query, from_language, to_language);
+//grapevine.get_news_about(search_query, 'en');
+grapevine.simulate_country('hello', '');
 /*
 grapevine.get_json_from_api(
 	'www.ajax.googleapis.com',
