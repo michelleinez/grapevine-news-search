@@ -1,0 +1,29 @@
+<html>
+<body>
+<div id="country_0"></div>
+<div id="country_1"></div>
+</body>
+<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+	var socket = io.connect('http://localhost:8080');
+	socket.on('ack', function (data) {
+		socket.emit('search', 'gorilla attacks');
+		socket.emit('countries', '{"countries":["us", "fr"]}');
+		socket.on('news', function(data) {
+			console.log('news received ' + data.country_code);
+			var country_code = data.country_code;
+			var news = data.news;
+			console.log(news.title);
+			if (country_code == 'us')
+			{
+				$('#country_0').html(news.title);
+			}
+			else
+			{
+				$('#country_1').html(news.title);			
+			}
+		});
+	});
+</script>
+</html>

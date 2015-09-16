@@ -1,7 +1,8 @@
 //  grapevine setup
 var https = require('https');
 var socks = require('socksv5');
-
+var querystring = require('querystring');
+var striptags = require('striptags');
 var grapevine = {
 	countries: {
 		be: {
@@ -22,69 +23,22 @@ var grapevine = {
 	
 	base_socks_port:9050,
 	API_KEY: 'AIzaSyBfnsOwVWHgYMZeqILWCoUwjJyomzpsV_Y',
-	get_json_from_api: function(host, path, socket, callback)
-	{
-		if (socket === undefined)
-		{
-			socket = proxysocket.create('localhost', 9050);
-			console.log('socket was undefined');
-			return;
-		}
 
-		var response_string = '';
-
-		socket.on('data', function (data) {
-			// this may be called multiple times for a given response, as the data is broken into chunks, 
-			// so we simply store it until we have all of it
-			response_string += data;
-		    // Receive data
-		});
-
-		socket.on('end', function(){
-			var json_string = response_string.replace(/(\n|.|\r)*?(?={)/m, '');
-			console.log(json_string);
-		 	//var json = JSON.parse(json_string);
-		 	console.log("parsed json");
-		 	//callback(json);
-		});
-
-		socket.on('error', function(error){
-			console.log('error' + error);
-		});
-
-		socket.connect(host, 80, function () {
-		    console.log('connected');
-		    var request = 'GET ' + path + ' HTTP/1.0\n\n';
-		    console.log(request); 
-			socket.write(request);
-		    // Connected
-		});
-	},
-	get_socket_for_country: function(country_code)
-	{
-		var agent = proxysocket.createAgent('localhost', 9050);
-
-		return proxysocket.create('localhost', 9050);
-		/*
-		int idx = this.country_codes.indexOf(country_code);
-		if (idx >= 0)
-		{
-			return proxysocket.create('localhost', this.base_socks_port + idx);
-		}
-		*/
-	},
 	//https call to google translate API
 	translate: function(search_query, from_language, to_language, callback){
-		var options = {
+		// URL encode the search string
+		search_query = querystring.escape(search_query);
+
+		//console.log(search_query);
+		var httpOptions = {
 			host: 'www.googleapis.com',
 			port: 443,
 			path: '/language/translate/v2?key='+this.API_KEY+'&source='+from_language+'&target='+to_language+'&q='+search_query,
 			method: 'GET'
 		};
+//		console.log(httpOptions.host + httpOptions.path);
 
-		//console.log(options);
-
-		var req = https.request(options, function(res) {
+		var req = https.request(httpOptions, function(res) {
 //			console.log("statusCode: ", res.statusCode);
 //			console.log("headers: ", res.headers);
 			var response_string = '';
@@ -101,25 +55,31 @@ var grapevine = {
 			console.error(e);
 		});
 	},
+	// hit news api with search term, sending request thru appropriate tor instance
 	get_news_about: function(search_query, country_code, callback){
-		var host = 'ajax.googleapis.com';
-		var path = '/ajax/services/search/news?v=1.0&q=' + search_query;
+		// URL encode the search string
+		search_query = querystring.escape(search_query);
 //		var torPort = this.base_socks_port + this.country_codes.indexOf(country_code);
 		var torPort = 9050;
-		console.log('getting news about ' + search_query + ' from country ' + country_code);
+//		console.log('getting news about ' + search_query + ' from country ' + country_code);
+
+		// tor config
 		var socksConfig = {
 		  proxyHost: '127.0.0.1',
 		  proxyPort: torPort,
 		  auths: [ socks.auth.None() ]
 		};
+		// request config
+		var httpOptions = {
+			host: 'ajax.googleapis.com',
+		  	port: 443,
+		  	path: '/ajax/services/search/news?v=1.0&q=' + search_query,	
+		  	method: 'GET',
+	 		agent: new socks.HttpsAgent(socksConfig)
+		};
+//		console.log(httpOptions.host + httpOptions.path);
 
-		https.get({
-		  host: host,
-		  port: 443,
-		  method: 'GET',
-		  path: path,
-		  agent: new socks.HttpsAgent(socksConfig)
-		}, function(res) {
+		https.get(httpOptions, function(res) {
 			res.resume();
 			var response_string = '';
 			res.on('data', function(d) {
@@ -127,14 +87,54 @@ var grapevine = {
 			});
 			res.on('end', function() {
 				callback(JSON.parse(response_string));
-//				console.log(response_string);
+//				consople.log(response_string);
 			});
 		});
 	},
-	simulate_country: function(search_query, country_code)
+	simulate_country: function(search_query, country_code, callback)
 	{
-		this.translate(search_query, 'en', 'fr', function(result){
-			console.log(result);
+		var that = this;
+		var from_language = 'en';
+		var to_language = 'fr';
+		this.translate(search_query, from_language, to_language, function(result){
+			var translation = result.data.translations[0].translatedText;
+			//translation = querystring.escape(translation);
+			//console.log(translation);
+			that.get_news_about(translation, country_code, function(result){
+				var news_stories = [];
+				var translated = 0;
+				var results = result.responseData.results;
+				var translator = function(i)
+				{
+					that.translate(news_stories[i].summary, to_language, from_language, function(result){
+						var translation = result.data.translations[0].translatedText;
+						news_stories[i].summary = translation;
+						that.translate(news_stories[i].title, to_language, from_language, function(result){
+							var translation = result.data.translations[0].translatedText;
+							news_stories[i].title = translation;
+//							console.log('news_stories[' + i + '] = ' + news_stories[i].title + ' ' + news_stories[i].summary);
+							if (++translated == news_stories.length)
+							{
+								callback(news_stories);
+							}
+						});
+					});
+				}
+				for (var i = 0; i < results.length; i++)
+				{
+					var news_story = {
+						title: results[i].titleNoFormatting,
+						summary: results[i].content,
+						url: results[i].unescapedUrl,
+						imageUrl: results[i].image.url,
+					};
+					news_story.summary = striptags(news_story.summary);
+					//news_story.title = striptags(news_story.title);
+					news_stories.push(news_story);
+					translator(i);
+				}
+//				console.log(news_stories);
+			});
 		});
 	}
 };

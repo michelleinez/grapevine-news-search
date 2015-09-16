@@ -1,0 +1,29 @@
+{
+  "name": "grapevine",
+  "version": "1.0.0",
+  "description": "Simulate google searches from other countries.",
+  "main": "grapevine.js",
+  "dependencies": {
+    "socksv5": "^0.0.6"
+  },
+  "devDependencies": {
+    "express": "^4.13.3",
+    "querystring": "^0.2.0",
+    "socket.io": "^1.3.6",
+    "striptags": "^2.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://snakecharmr1024@bitbucket.org/snakecharmr1024/grapevine.git"
+  },
+  "keywords": [
+    "search",
+    "tor",
+    "news"
+  ],
+  "author": "",
+  "license": "ISC"
+}

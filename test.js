@@ -7,7 +7,9 @@ var to_language = 'fr';
 
 //grapevine.translate(search_query, from_language, to_language);
 //grapevine.get_news_about(search_query, 'en');
-grapevine.simulate_country('hello', '');
+grapevine.simulate_country('gorilla attacks', '', function(result){
+	console.log(result);
+});
 /*
 grapevine.get_json_from_api(
 	'www.ajax.googleapis.com',
