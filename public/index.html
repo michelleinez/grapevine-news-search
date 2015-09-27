@@ -9,7 +9,8 @@
 	var socket = io.connect('http://localhost:8080');
 	socket.on('ack', function (data) {
 		socket.emit('search', 'gorilla attacks');
-		socket.emit('countries', '{"countries":["us", "fr"]}');
+		var country_data = {countries:['us', 'fr']};
+		socket.emit('countries', JSON.stringify(country_data));
 		socket.on('news', function(data) {
 			console.log('news received ' + data.country_code);
 			var country_code = data.country_code;
