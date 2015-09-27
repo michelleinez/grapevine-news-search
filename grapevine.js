@@ -48,11 +48,14 @@ var grapevine = {
 			res.on('end', function() {
 				callback(JSON.parse(response_string))
 			});
+			res.on('error', function(err) {
+				console.log('Error: ' + err);
+			});
 		});
 		req.end();
 
 		req.on('error', function(e) {
-			console.error(e);
+			console.error('Error: ' + e);
 		});
 	},
 	// hit news api with search term, sending request thru appropriate tor instance
@@ -79,7 +82,7 @@ var grapevine = {
 		};
 //		console.log(httpOptions.host + httpOptions.path);
 
-		https.get(httpOptions, function(res) {
+		var req = https.request(httpOptions, function(res) {
 			res.resume();
 			var response_string = '';
 			res.on('data', function(d) {
@@ -89,6 +92,14 @@ var grapevine = {
 				callback(JSON.parse(response_string));
 //				consople.log(response_string);
 			});
+			res.on('error', function(err) { 
+				console.log('Error: ' + err);
+			});
+		});
+		req.end();
+
+		req.on('error', function(e) {
+			console.error('Error: ' + e);
 		});
 	},
 	simulate_country: function(search_query, country_code, callback)
@@ -112,7 +123,7 @@ var grapevine = {
 						that.translate(news_stories[i].title, to_language, from_language, function(result){
 							var translation = result.data.translations[0].translatedText;
 							news_stories[i].title = translation;
-//							console.log('news_stories[' + i + '] = ' + news_stories[i].title + ' ' + news_stories[i].summary);
+							console.log('news_stories[' + i + '] = ' + news_stories[i].title + ': ' + news_stories[i].summary);
 							if (++translated == news_stories.length)
 							{
 								callback(news_stories);
