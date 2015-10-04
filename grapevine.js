@@ -102,6 +102,47 @@ var grapevine = {
 			console.error('Error: ' + e);
 		});
 	},
+	check_ip_for_country: function(country_code, callback) 
+	{
+		// Liam plz help
+
+
+		// should derive torPort from country_code
+		var torPort = 9050;	
+		var socksConfig = {
+		  proxyHost: '127.0.0.1',
+		  proxyPort: torPort,
+		  auths: [ socks.auth.None() ]
+		};
+
+		var httpOptions = {
+			// this is ip of "whatsmyip" server
+			host: '104.197.87.137',
+		  	port: 80,
+		  	path: '/',	
+		  	method: 'GET',
+	 		agent: new socks.HttpAgent(socksConfig)
+		};
+
+		var req = http.request(httpOptions, function(res) {
+			res.resume();
+			var response_string = '';
+			res.on('data', function(d) {
+				response_string += d;
+			});
+			res.on('end', function() {
+				callback(JSON.parse(response_string));
+			});
+			res.on('error', function(err) { 
+				console.log('Error: ' + err);
+			});
+		});
+		req.end();
+
+		req.on('error', function(e) {
+			console.error('Error: ' + e);
+		});
+	},
 	simulate_country: function(search_query, country_code, callback)
 	{
 		var that = this;
