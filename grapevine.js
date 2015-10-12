@@ -1,6 +1,7 @@
 //  grapevine setup
 var https = require('https');
 var socks = require('socksv5');
+var exec = require('child_process').exec;
 var querystring = require('querystring');
 var striptags = require('striptags');
 var grapevine = {
@@ -22,8 +23,41 @@ var grapevine = {
     "br","bg","au","at","ar","aq","ao","ae","nl","de","fr"],
 	
 	base_socks_port:9050,
+	base_control_port: 15000,
 	API_KEY: 'AIzaSyBfnsOwVWHgYMZeqILWCoUwjJyomzpsV_Y',
 
+	init: function(callback) {
+
+		// kill all tor instances
+		exec('killall tor', function(error, stdout, stderr) {
+	   		if (error) {
+		   		console.log(error);
+		   		console.log(stderr);
+	   		}
+		});
+
+		var i = 1;
+		for (key in this.countries) {
+			var socksPort = this.base_socks_port + i;
+			var controlPort = this.base_control_port + i;
+			this.countries[key].socksPort = socksPort;
+			this.countries[key].controlPort = controlPort;
+
+			var pidFilename = 'tor' + i + '.pid';
+			var dataDirectory = 'data/tor' + i;
+			var exitNode = '{' + key + '}';
+			var torCommand = 'tor --RunAsDaemon 1 --CookieAuthentication 0 --HashedControlPassword "" --ControlPort ' + controlPort + ' --PidFile ' + pidFilename + ' --SocksPort ' + socksPort + ' --DataDirectory ' + dataDirectory + ' --ExitNodes ' + exitNode;
+			i++;
+		   	exec(torCommand, function(error, stdout, stderr){
+		   		if (error) {
+			   		console.log(error);
+			   		console.log(stderr);
+		   		}
+		  	});
+		}	
+
+		callback();	
+	},
 	//https call to google translate API
 	translate: function(search_query, from_language, to_language, callback){
 		// URL encode the search string
