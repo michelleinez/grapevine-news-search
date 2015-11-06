@@ -9,7 +9,11 @@
 	var socket = io.connect('http://localhost:8080');
 	socket.on('ack', function (data) {
 		socket.emit('search', 'gorilla attacks');
+
+		/* should be a json object */
 		socket.emit('countries', '{"countries":["us", "fr"]}');
+
+		/* on news: funtion=callback after receive news item */
 		socket.on('news', function(data) {
 			console.log('news received ' + data.country_code);
 			var country_code = data.country_code;
