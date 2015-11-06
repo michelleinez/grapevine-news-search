@@ -1,20 +1,13 @@
 //  grapevine setup
 var https = require('https');
+var http = require('http');
 var socks = require('socksv5');
+var countries_json = require('./countries.json');
+var exec = require('child_process').exec;
 var querystring = require('querystring');
 var striptags = require('striptags');
 var grapevine = {
-	countries: {
-		be: {
-			country_code:'be',
-			country_name:'Beryllium',
-			language_code:'??',
-			language_name:'Basilisk'
-		},
-		pl: {
-			//...
-		}
-	},
+	countries: countries_json,
 	country_codes: ["be","pl","ca","za","vn","uz","ua","tw","tr","th","sk", 
     "sg","se","sd","sa","ru","ro","pt","ph","pa","nz","np","no","my","mx", 
     "md","lv","lu","kr","jp","it","ir","il","ie","id","hr","hk","gr","gi", 
@@ -22,8 +15,44 @@ var grapevine = {
     "br","bg","au","at","ar","aq","ao","ae","nl","de","fr"],
 	
 	base_socks_port:9050,
+	base_control_port: 15000,
 	API_KEY: 'AIzaSyBfnsOwVWHgYMZeqILWCoUwjJyomzpsV_Y',
 
+	init: function(callback) {
+		var that = this;
+		// kill all tor instances
+		exec('killall tor', function(error, stdout, stderr) {
+	   		if (error) {
+		   		console.log(error);
+	   		}
+			var i = 1;
+			var j = 0;
+			for (key in that.countries) {
+				var socksPort = that.base_socks_port + i;
+				var controlPort = that.base_control_port + i;
+				that.countries[key].socksPort = socksPort;
+				that.countries[key].controlPort = controlPort;
+
+				var pidFilename = 'tor' + i + '.pid';
+				var dataDirectory = 'data/tor' + i;
+				var exitNode = '{' + key + '}';
+				var torCommand = 'tor --RunAsDaemon 1 --CookieAuthentication 0 --HashedControlPassword "" --ControlPort ' + controlPort + ' --PidFile ' + pidFilename + ' --SocksPort ' + socksPort + ' --DataDirectory ' + dataDirectory + ' --ExitNodes ' + exitNode;
+				i++;
+			   	exec(torCommand, function(error, stdout, stderr){
+			   		if (error) {
+				   		console.log(error);
+				   		console.log(stderr);
+			   		}
+					console.log('started tor instance for ' + key);
+			   		j++;
+			   		if (j >= Object.keys(that.countries).length)
+			   		{
+						callback();	
+			   		}
+			  	});
+			}	
+		});
+	},
 	//https call to google translate API
 	translate: function(search_query, from_language, to_language, callback){
 		// URL encode the search string
@@ -33,7 +62,7 @@ var grapevine = {
 		var httpOptions = {
 			host: 'www.googleapis.com',
 			port: 443,
-			path: '/language/translate/v2?key='+this.API_KEY+'&source='+from_language+'&target='+to_language+'&q='+search_query,
+			path: '/language/translate/v2?key=' + this.API_KEY + '&source=' + from_language + '&target=' + to_language + '&q=' + search_query,
 			method: 'GET'
 		};
 //		console.log(httpOptions.host + httpOptions.path);
@@ -48,19 +77,22 @@ var grapevine = {
 			res.on('end', function() {
 				callback(JSON.parse(response_string))
 			});
+			res.on('error', function(err) {
+				console.log('Error: ' + err);
+			});
 		});
 		req.end();
 
 		req.on('error', function(e) {
-			console.error(e);
+			console.error('Error: ' + e);
 		});
 	},
 	// hit news api with search term, sending request thru appropriate tor instance
 	get_news_about: function(search_query, country_code, callback){
 		// URL encode the search string
 		search_query = querystring.escape(search_query);
-//		var torPort = this.base_socks_port + this.country_codes.indexOf(country_code);
-		var torPort = 9050;
+		var torPort = this.countries[country_code].socksPort;
+//		var torPort = 9050;
 //		console.log('getting news about ' + search_query + ' from country ' + country_code);
 
 		// tor config
@@ -79,7 +111,7 @@ var grapevine = {
 		};
 //		console.log(httpOptions.host + httpOptions.path);
 
-		https.get(httpOptions, function(res) {
+		var req = https.request(httpOptions, function(res) {
 			res.resume();
 			var response_string = '';
 			res.on('data', function(d) {
@@ -89,6 +121,60 @@ var grapevine = {
 				callback(JSON.parse(response_string));
 //				consople.log(response_string);
 			});
+			res.on('error', function(err) { 
+				console.log('Error: ' + err);
+			});
+		});
+		req.end();
+
+		req.on('error', function(e) {
+			console.error('Error: ' + e);
+		});
+	},
+	check_ip_for_country: function(country_code, callback) 
+	{
+		var country = this.countries[country_code];
+		if (country === undefined) {
+			console.error('No country found for country code: ' + country_code);
+			return;
+		}
+		// should derive torPort from country_code
+//		var torPort = 9050;	
+		var torPort = country.socksPort;
+		var socksConfig = {
+		  proxyHost: '127.0.0.1',
+		  proxyPort: torPort,
+		  auths: [ socks.auth.None() ]
+		};
+
+		var httpOptions = {
+			// this is ip of "whatsmyip" server
+			host: '130.211.135.85',
+		  	port: 80,
+		  	path: '/',	
+		  	method: 'GET',
+	 		agent: new socks.HttpAgent(socksConfig)
+		};
+
+		var req = http.request(httpOptions, function(res) {
+			res.resume();
+			var response_string = '';
+			res.on('data', function(d) {
+				response_string += d;
+			});
+			res.on('end', function() {
+				var json = JSON.parse(response_string);
+				var output_country = json.country;
+				callback(output_country.toLowerCase().trim(), country_code.toLowerCase().trim());
+			});
+			res.on('error', function(err) { 
+				console.log('Error: ' + err);
+			});
+		});
+		req.end();
+
+		req.on('error', function(e) {
+			console.error('Error: ' + e);
 		});
 	},
 	simulate_country: function(search_query, country_code, callback)
@@ -112,7 +198,7 @@ var grapevine = {
 						that.translate(news_stories[i].title, to_language, from_language, function(result){
 							var translation = result.data.translations[0].translatedText;
 							news_stories[i].title = translation;
-//							console.log('news_stories[' + i + '] = ' + news_stories[i].title + ' ' + news_stories[i].summary);
+							console.log('news_stories[' + i + '] = ' + news_stories[i].title + ': ' + news_stories[i].summary);
 							if (++translated == news_stories.length)
 							{
 								callback(news_stories);
@@ -136,6 +222,18 @@ var grapevine = {
 //				console.log(news_stories);
 			});
 		});
+	}, 
+	shutdown : function (callback) 
+	{
+		// kill all tor instances
+		exec('killall tor', function(error, stdout, stderr) {
+	   		if (error) {
+		   		console.log(error);
+		   		console.log(stderr);
+	   		}
+		});		
+		callback();
+
 	}
 };
 

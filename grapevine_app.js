@@ -5,7 +5,7 @@ var server = require('http').Server(app);
 var grapevine = require('./grapevine');
 var io = require('socket.io')(server);
 
-server.listen(8080);
+server.listen(8081);
 
 io.on('connection', function (socket) {
 	var search_query;
@@ -19,6 +19,7 @@ io.on('connection', function (socket) {
 		console.log(countries);		
 		var grapes = function(i)
 		{
+			console.log("grapes(" + i + ")");
 			grapevine.simulate_country(search_query, countries[i], function(result){
 				console.log('country simulated ' + countries[i]);
 				socket.emit('news', { country_code: countries[i], news: result });
@@ -28,6 +29,9 @@ io.on('connection', function (socket) {
 		{
 			grapes(i);
 		}
+	});
+	socket.on('error', function (err) {
+		console.log("Error: " + err);
 	});
 });
 /*
