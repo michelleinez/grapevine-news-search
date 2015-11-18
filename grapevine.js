@@ -8,12 +8,6 @@ var querystring = require('querystring');
 var striptags = require('striptags');
 var grapevine = {
 	countries: countries_json,
-	country_codes: ["be","pl","ca","za","vn","uz","ua","tw","tr","th","sk", 
-    "sg","se","sd","sa","ru","ro","pt","ph","pa","nz","np","no","my","mx", 
-    "md","lv","lu","kr","jp","it","ir","il","ie","id","hr","hk","gr","gi", 
-    "gb","fi","es","ee","dk","cz","cy","cr","co","cn","cl","ci","ch","by", 
-    "br","bg","au","at","ar","aq","ao","ae","nl","de","fr"],
-	
 	base_socks_port:9050,
 	base_control_port: 15000,
 	API_KEY: 'AIzaSyBfnsOwVWHgYMZeqILWCoUwjJyomzpsV_Y',
@@ -23,7 +17,7 @@ var grapevine = {
 		// kill all tor instances
 		exec('killall tor', function(error, stdout, stderr) {
 	   		if (error) {
-		   		console.log(error);
+		   		//console.log(error);
 	   		}
 			var i = 1;
 			var j = 0;
@@ -35,15 +29,14 @@ var grapevine = {
 
 				var pidFilename = 'tor' + i + '.pid';
 				var dataDirectory = 'data/tor' + i;
-				var exitNode = '{' + key + '}';
+				var exitNode = '{' + key.toLowerCase() + '}';
 				var torCommand = 'tor --RunAsDaemon 1 --CookieAuthentication 0 --HashedControlPassword "" --ControlPort ' + controlPort + ' --PidFile ' + pidFilename + ' --SocksPort ' + socksPort + ' --DataDirectory ' + dataDirectory + ' --ExitNodes ' + exitNode;
 				i++;
 			   	exec(torCommand, function(error, stdout, stderr){
 			   		if (error) {
 				   		console.log(error);
-				   		console.log(stderr);
+				   		//console.log(stderr);
 			   		}
-					console.log('started tor instance for ' + key);
 			   		j++;
 			   		if (j >= Object.keys(that.countries).length)
 			   		{

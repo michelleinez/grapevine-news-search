@@ -6,8 +6,13 @@
 <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
+	//connect to server
 	var socket = io.connect('http://127.0.0.1:8081');
+	//when ack message is emitted
 	socket.on('ack', function (data) {
+		var countries = data;
+		console.log(countries);
+
 		socket.emit('search', 'gorilla attacks');
 		var country_data = {countries:['us', 'fr']};
 		socket.emit('countries', JSON.stringify(country_data));

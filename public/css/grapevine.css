@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'Bell Gothic';
+  src:  url('../fonts/BellGothicBT-Roman.woff') format('woff'),
+        url('../fonts/BellGothicBT-Roman.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Bell Gothic Black BT Regular';
+	src:  url('../fonts/BellGothicBT-Black.woff') format('woff'),
+          url('../fonts/BellGothicBT-Black.woff2') format('woff2');
+}
+
+body {
+	font-family: 'Bell Gothic';
+}
+
+h4 {
+	font-family: 'Bell Gothic Black BT Regular';
+}
+
+.title {
+	background-color: #000;
+	color: #FFF;
+	padding: 10px 20px; 
+}
+
+/* Making the country list scrollable: */
+.country-list {
+	overflow-y: scroll;
+	height: 50vh;
+	width: 100%;
+	border: 1px solid #E6E6E6;
+	border-radius: 5px;
+	padding-top: 10px;
+}
+.country-names{
+	margin-left: 15px;
+}
+.list-group-item:hover{
+	background-color: #1B1464;
+	color: #fff;
+}
+
+.list-group{
+	margin-bottom: -1px;
+}
+
+#map {
+	height: 50vh;
+	width: 100%;
+}
+
+.gv-logo {
+	margin-top: 21px;
+}
+
+.spacer {
+	margin-bottom: 20px;
+}
+
+/* For UI-Bootstrap to work: */
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+	cursor: pointer;
+}
+
+.form-control {
+	border: 1px solid #E6E6E6;
+}
+
+.form-control:focus {
+	border: 1px solid #000;
+}
+
+.btn-primary {
+	background-color: #000;
+	border: 1px solid #2c3e50;
+}
+
+.btn-primary.active {
+	background-color: #1abc9c;
+	border: 1px solid #1abc9c;
+	transition: border-color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s;
+}
