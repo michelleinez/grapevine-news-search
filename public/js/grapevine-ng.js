@@ -9,6 +9,11 @@
 			socket.on('ack', function (data) {
 
 				$scope.countries = data;
+				for(cc in $scope.countries){
+					console.log($scope.countries[cc].name);
+				}
+				
+				console.log($scope.countries);
 				$scope.isPinned = function(country) {
 					return country.checked ?  "pin" : "no-pin";
 				}
@@ -16,7 +21,7 @@
 					return country.checked ?  "fa fa-check-square-o" : "fa fa-square-o";
 				}
 
-				console.log(countries);
+				//console.log(countries);
 /*
 				socket.emit('search', 'gorilla attacks');
 				var country_data = {countries:['us', 'fr']};
