@@ -20,6 +20,7 @@ grapevine.init(function(){
 
 	//socket is specific to each clients connection
 	io.on('connection', function (socket) {
+		console.log("received connection");
 		var search_query;
 		//when we receive search message, do function(data)
 		socket.on('search', function (data) {

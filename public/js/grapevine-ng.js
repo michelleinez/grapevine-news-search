@@ -17,7 +17,7 @@
 				}
 
 				console.log(countries);
-
+/*
 				socket.emit('search', 'gorilla attacks');
 				var country_data = {countries:['us', 'fr']};
 				socket.emit('countries', JSON.stringify(country_data));
@@ -35,6 +35,7 @@
 						$('#country_1').html(news_item);			
 					}
 				});
+*/
 				socket.on('error', function(err){
 					console.log("error: " + err);
 				});

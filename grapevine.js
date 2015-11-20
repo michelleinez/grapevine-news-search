@@ -12,7 +12,12 @@ var grapevine = {
 	base_control_port: 15000,
 	API_KEY: 'AIzaSyBfnsOwVWHgYMZeqILWCoUwjJyomzpsV_Y',
 
+	// setting this to true makes everything use a single tor instance on port 9050
+	debug: true,
 	init: function(callback) {
+		if (this.debug) {
+			return callback();
+		}
 		var that = this;
 		// kill all tor instances
 		exec('killall tor', function(error, stdout, stderr) {
@@ -60,23 +65,23 @@ var grapevine = {
 		};
 //		console.log(httpOptions.host + httpOptions.path);
 
-		var req = https.request(httpOptions, function(res) {
+		var request = https.request(httpOptions, function(response) {
 //			console.log("statusCode: ", res.statusCode);
 //			console.log("headers: ", res.headers);
 			var response_string = '';
-			res.on('data', function(d) {
+			response.on('data', function(d) {
 				response_string += d;
 			});
-			res.on('end', function() {
+			response.on('end', function() {
 				callback(JSON.parse(response_string))
 			});
-			res.on('error', function(err) {
+			response.on('error', function(err) {
 				console.log('Error: ' + err);
 			});
 		});
-		req.end();
+		request.end();
 
-		req.on('error', function(e) {
+		request.on('error', function(e) {
 			console.error('Error: ' + e);
 		});
 	},
@@ -84,7 +89,15 @@ var grapevine = {
 	get_news_about: function(search_query, country_code, callback){
 		// URL encode the search string
 		search_query = querystring.escape(search_query);
-		var torPort = this.countries[country_code].socksPort;
+		var torPort;
+		if (this.debug) 
+		{
+			torPort = 9050;
+		}
+		else
+		{
+			torPort = this.countries[country_code].socksPort;
+		}
 //		var torPort = 9050;
 //		console.log('getting news about ' + search_query + ' from country ' + country_code);
 
@@ -104,23 +117,23 @@ var grapevine = {
 		};
 //		console.log(httpOptions.host + httpOptions.path);
 
-		var req = https.request(httpOptions, function(res) {
-			res.resume();
+		var request = https.request(httpOptions, function(response) {
+			response.resume();
 			var response_string = '';
-			res.on('data', function(d) {
+			response.on('data', function(d) {
 				response_string += d;
 			});
-			res.on('end', function() {
+			response.on('end', function() {
 				callback(JSON.parse(response_string));
 //				consople.log(response_string);
 			});
-			res.on('error', function(err) { 
+			response.on('error', function(err) { 
 				console.log('Error: ' + err);
 			});
 		});
-		req.end();
+		request.end();
 
-		req.on('error', function(e) {
+		request.on('error', function(e) {
 			console.error('Error: ' + e);
 		});
 	},
@@ -157,8 +170,8 @@ var grapevine = {
 			});
 			res.on('end', function() {
 				var json = JSON.parse(response_string);
-				var output_country = json.country;
-				callback(output_country.toLowerCase().trim(), country_code.toLowerCase().trim());
+				var exit_node_country = json.country;
+				callback(exit_node_country.toLowerCase().trim(), country_code.toLowerCase().trim());
 			});
 			res.on('error', function(err) { 
 				console.log('Error: ' + err);

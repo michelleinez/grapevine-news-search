@@ -2,12 +2,35 @@ brew install nodejs
 apt-get install nodejs
 
 How to run:
-init.sh
 nodejs blah.js
 
 
 To stop tor instances:
-stop.sh
+killall tor
 
 
-Put testing code in test.js or something like that.
+
+Michelle look here
+
+
+
+
+
+
+For debugging:
+
+in one terminal, run
+
+tor
+
+
+in another run 
+
+nodejs grapevine_app.js
+
+in browser goto
+
+localhost:8081
+
+
+

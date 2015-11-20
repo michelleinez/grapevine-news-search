@@ -1,46 +1,81 @@
-<html>
-<body>
-<div id="country_0"></div>
-<div id="country_1"></div>
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/leaflet.css" rel="stylesheet">
+    <link href="./css/select.css" rel="stylesheet">
+    <link href="./css/grapevine.css" rel="stylesheet">
+    <!--script type="text/javascript" src="./js/jquery.js"></script-->
+    <!--script type="text/javascript" src="./js/bootstrap.min.js"></script-->
+</head>
+
+<body ng-app="grapevine">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <img class="gv-logo" src="img/grapevineLogo.png">
+                <hr>
+            </div>
+        </div>
+        <div class="row spacer">
+            <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
+                <div class="row" ng-controller="SocketController as socket">
+                    {{countries}}
+                    <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-0">
+                        <h4 class="title">Country List</h4>
+                        <div class="country-list" id="country_list">
+                            <div>
+                                <ul ng-repeat="country in countries" class="list-group" >
+                                    <li ng-click="country.checked = !country.checked" ng-init="country.checked=false" class="list-group-item">
+                                        <i ng-class="isChecked(country)" ></i>
+                                        <label class="country-names">
+                                            {{country}}
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden-xs col-sm-9">
+                        <h4 class="title">World Map</h4>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3 text-center">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search countries for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">Go!</button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+
+                
+                
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="./js/leaflet.js"></script>
+    <script type="text/javascript" src="./js/countries-map.js"></script>
+    <script type="text/javascript" src="./js/angular.min.js"></script>
+    <script type="text/javascript" src="./js/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/select.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+    <script type="text/javascript" src="./js/countrySelector.js"></script>
+    <script type="text/javascript" src="./js/grapevine-ng.js"></script>
+    
 </body>
-<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script>
-	//connect to server
-	var socket = io.connect('http://127.0.0.1:8081');
-	//when ack message is emitted
-	socket.on('ack', function (data) {
-		var countries = data;
-		console.log(countries);
 
-		socket.emit('search', 'gorilla attacks');
-		var country_data = {countries:['us', 'fr']};
-		socket.emit('countries', JSON.stringify(country_data));
-		socket.on('news', function(data) {
-			console.log('news received');
-			var country_code = data.country_code;
-			var news = data.news;
-			var news_item = '<a href=' + news[0].url + '>' +news[0].title + '<br>' + news[0].summary +'</a><br><img src=' + news[0].imageUrl + '>';
-			if (country_code == 'us')
-			{
-				$('#country_0').html(news_item);
-			}
-			else
-			{
-				$('#country_1').html(news_item);			
-			}
-		});
-		socket.on('error', function(err){
-			console.log("error: " + err);
-		});
-	});
-
-	function print(obj) {
-		for (var property in obj) {
-		    if (obj.hasOwnProperty(property)) {
-		        console.log(property + ':' + obj[property]);
-		    }
-		}
-	}
-</script>
 </html>
