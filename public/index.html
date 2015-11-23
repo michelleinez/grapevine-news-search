@@ -16,7 +16,7 @@
     <!--script type="text/javascript" src="./js/bootstrap.min.js"></script-->
 </head>
 
-<body ng-app="grapevine">
+<body ng-app="grapevine" ng-controller="SocketController as socket">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -26,7 +26,7 @@
         </div>
         <div class="row spacer">
             <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
-                <div class="row" ng-controller="SocketController as socket">
+                <div class="row" >
                     <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-0">
                         <h4 class="title">Country List</h4>
                         <div class="country-list" id="country_list">
@@ -44,6 +44,7 @@
                     </div>
                     <div class="hidden-xs col-sm-9">
                         <h4 class="title">World Map</h4>
+                        
                         <div id="map"></div>
                     </div>
                 </div>
