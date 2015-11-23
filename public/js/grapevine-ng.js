@@ -5,15 +5,11 @@
 
 		app.controller('SocketController', function($scope){
 			var socket = io.connect('http://127.0.0.1:8081');
-			$scope.socket=socket;
+			//$scope.socket=socket;
+			var that = this;
+
 			socket.on('ack', function (data) {
 
-				$scope.countries = data;
-				for(cc in $scope.countries){
-					console.log($scope.countries[cc].name);
-				}
-				
-				console.log($scope.countries);
 				$scope.isPinned = function(country) {
 					return country.checked ?  "pin" : "no-pin";
 				}
@@ -21,7 +17,6 @@
 					return country.checked ?  "fa fa-check-square-o" : "fa fa-square-o";
 				}
 
-				//console.log(countries);
 /*
 				socket.emit('search', 'gorilla attacks');
 				var country_data = {countries:['us', 'fr']};
@@ -44,8 +39,11 @@
 				socket.on('error', function(err){
 					console.log("error: " + err);
 				});
-			});
+				$scope.$apply(function(){that.countries = data;});
 
+
+			});
+	
 		});
 	}
 )();
