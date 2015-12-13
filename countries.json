@@ -963,8 +963,8 @@
         "country_code": "KP",
         "language": "ENGLISH",
         "language_code": "EN",
-        "latitude": "",
-        "longitude": "",
+        "latitude": 38.75836,
+        "longitude": 127.592468,
         "name": "KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF"
     },
     "KR": {
@@ -1459,8 +1459,8 @@
         "country_code": "PS",
         "language": "ENGLISH",
         "language_code": "EN",
-        "latitude": "",
-        "longitude": "",
+        "latitude": 30.8760272,
+        "longitude": 35.0015196,
         "name": "PALESTINIAN, STATE OF"
     },
     "PT": {
@@ -1883,8 +1883,8 @@
         "country_code": "VA",
         "language": "ENGLISH",
         "language_code": "EN",
-        "latitude": "",
-        "longitude": "",
+        "latitude": 41.911,
+        "longitude": 12.452,
         "name": "HOLY SEE (VATICAN CITY STATE)"
     },
     "VC": {

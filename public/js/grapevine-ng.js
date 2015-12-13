@@ -5,8 +5,6 @@
 
 		app.controller('SocketController', function($scope){
 
-
-
 			// create a map in the "map" div, set the view to a given place and zoom
 			var map = L.map('map', {
 			    layers: [
@@ -36,6 +34,21 @@
 			    iconAnchor:   [8, 8]
 			});
 
+				//on click, update map with appropriate pin color for selected/unselected countries
+			function updateMarker(country){
+				if(country.checked==true){
+					country['marker'].options.zIndexOffset=1000;
+					country['marker'].options.title=country['name'];
+					country['marker'].setIcon(selectedMarkerIcon);
+				} else {
+					//remove marker
+					country['marker'].options.zIndexOffset=0;
+					country['marker'].setIcon(selectedMarkerIcon);
+					country['marker'].setIcon(markerIcon);
+				}
+			}
+
+
 			
 
 			var socket = io.connect('http://127.0.0.1:8081');
@@ -46,7 +59,6 @@
 				console.log(data);
 
 				$scope.countryClick = function(country) {
-					console.log('country click! ', country.checked);
 					country.checked = !country.checked;
 					updateMarker(country);
 					return
@@ -96,15 +108,12 @@
 					}
 				});
 */
-				socket.on('error', function(err){
-					console.log("error: " + err);
-				});
-				$scope.$apply(function(){that.countries = data;});
-				
-				console.log('what', that.countries);
 
+				$scope.$apply(function(){ that.countries = data; });
+				
 				//pin all of the countries on the map
 				for(country in that.countries){
+					console.log(that.countries[country]);
 					that.countries[country]['marker'] = L.marker([that.countries[country].latitude, that.countries[country].longitude], {icon: markerIcon, title: that.countries[country]['name']});
 					var options = {
 						  offset:  new L.Point(2, 10),
@@ -115,28 +124,27 @@
 						that.countries[country]['marker'].bindPopup(that.countries[country]['popup'], options).openPopup();
 						map.addLayer(that.countries[country]['marker']);
 				}
-
-				//on click, update map with appropriate pin color for selected/unselected countries
-				function updateMarker(country){
-					if(country.checked==true){
-						country['marker'].options.zIndexOffset=1000;
-						country['marker'].options.title=country['name'];
-						
-						country['marker'].setIcon(selectedMarkerIcon);
-					} else {
-						//remove marker
-						country['marker'].options.zIndexOffset=0;
-						country['marker'].setIcon(selectedMarkerIcon);
-						country['marker'].setIcon(markerIcon);
-					}
-				}
-
-				
-
-				console.log(Object.getOwnPropertyNames(that.countries));
-
 			});
 	
+			$scope.go = function(query) {
+				var data = {};
+				data.search_query = query;
+				data.countries = Object.keys(that.countries).filter(function(country){ return that.countries[country].checked; });
+				socket.emit('search', data);
+			};
+
+			socket.on('news', function(news) {
+				// Michelle here's the news
+				console.log(news);
+			});
+			socket.on('error', function(err){
+				console.log("error: " + err);
+			});
+
 		});
+
+
 	}
+
+
 )();
