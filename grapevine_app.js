@@ -10,7 +10,7 @@ var server = require('http').Server(app);
 //any socket made with socket io library will be bound to the server
 var io = require('socket.io')(server);
 
-var port = 8081
+var port = 8081;
 //listens on localhost:8081 for event emissions
 server.listen(port);
 console.log('listening on port ' + port);
