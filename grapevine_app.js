@@ -9,8 +9,11 @@ var server = require('http').Server(app);
 //instantiating socket.io module with server as argument
 //any socket made with socket io library will be bound to the server
 var io = require('socket.io')(server);
+
+var port = 8081
 //listens on localhost:8081 for event emissions
-server.listen(8081);
+server.listen(port);
+console.log('listening on port ' + port);
 
 var grapevine = require('./grapevine');
 //define the init function
@@ -24,11 +27,12 @@ grapevine.init(function(){
 		var search_query;
 		//when we receive search message, do function(data)
 		socket.on('search', function (data) {
-			search_query = data;
+			console.log('received search query ' + Object.keys(data));
+
+			//data = JSON.parse(data);
+			var search_query = data.search_query;
+			var countries = data.countries;
 			console.log(search_query);
-		});
-		socket.on('countries', function (data) {
-			var countries = JSON.parse(data).countries;
 			console.log(countries);		
 			var grapes = function(i)
 			{

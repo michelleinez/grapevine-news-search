@@ -217,9 +217,12 @@ var grapevine = {
 					var news_story = {
 						title: results[i].titleNoFormatting,
 						summary: results[i].content,
-						url: results[i].unescapedUrl,
-						imageUrl: results[i].image.url,
+						url: results[i].unescapedUrl
 					};
+					if (results[i].image) {
+						news_story.imageUrl = results[i].image.url;
+					}
+
 					news_story.summary = striptags(news_story.summary);
 					//news_story.title = striptags(news_story.title);
 					news_stories.push(news_story);
