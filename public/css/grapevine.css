@@ -11,17 +11,24 @@
 }
 
 body {
-	font-family: 'Bell Gothic';
+	font-family: 'PT Sans';
+	overflow-x: hidden;
 }
 
 h4 {
-	font-family: 'Bell Gothic Black BT Regular';
+	font-family: 'PT Sans';
 }
+
+
 
 .title {
 	background-color: #000;
 	color: #FFF;
 	padding: 10px 20px; 
+}
+
+.inline {
+	white-space: nowrap;
 }
 
 /* Making the country list scrollable: */
@@ -30,7 +37,6 @@ h4 {
 	height: 50vh;
 	width: 100%;
 	border: 1px solid #E6E6E6;
-	border-radius: 5px;
 	padding-top: 10px;
 }
 .country-names{
@@ -46,12 +52,18 @@ h4 {
 }
 
 #map {
-	height: 50vh;
+	height: 55vh;
 	width: 100%;
 }
 
 .gv-logo {
 	margin-top: 21px;
+	margin-left: 25px;
+}
+
+.description {
+	text-align: center;
+	padding-bottom: 20px;
 }
 
 .spacer {
@@ -64,6 +76,10 @@ h4 {
 .carousel,
 .panel-title a {
 	cursor: pointer;
+}
+
+.country-input {
+	border: 1px solid #E6E6E6;
 }
 
 .form-control {
@@ -83,4 +99,63 @@ h4 {
 	background-color: #1abc9c;
 	border: 1px solid #1abc9c;
 	transition: border-color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s;
+}
+
+.country-tags {
+  font: 12px/1.5 'PT Sans', serif;
+  margin: 25px;
+  list-style: none;
+  margin: 0;
+  margin-top: 35px;
+  overflow: hidden; 
+  padding: 0;
+}
+
+.country-tags li {
+  float: left; 
+}
+
+.country-tag {
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #999;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 13px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.country-tag::before {
+  background: #fff;
+  border-radius: 10px;
+  height: 6px;
+  left: 5px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+
+.country-tag::after {
+  background: #fff;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #eee;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.country-tag:hover {
+  background-color: #1B1464;
+  color: white;
+  text-decoration: none;
+}
+
+.country-tag:hover::after {
+   border-left-color: #1B1464; 
 }
