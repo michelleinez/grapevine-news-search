@@ -64,7 +64,7 @@
     },
     "AQ": {
         "country_code": "AQ",
-        "language_code": "",
+        "language_code": "en",
         "latitude": -82.108182,
         "longitude": 34.378236,
         "name": "Antarctica"
@@ -236,13 +236,6 @@
         "latitude": 27.549511,
         "longitude": 90.5119273,
         "name": "Bhutan"
-    },
-    "BV": {
-        "country_code": "BV",
-        "language_code": "",
-        "latitude": -54.41960765,
-        "longitude": 3.36132045325744,
-        "name": "Bouvet Island"
     },
     "BW": {
         "country_code": "BW",
@@ -677,13 +670,6 @@
         "latitude": 22.2793278,
         "longitude": 114.1628131,
         "name": "Hong Kong"
-    },
-    "HM": {
-        "country_code": "HM",
-        "language_code": "",
-        "latitude": -53.0242765,
-        "longitude": 72.9231353,
-        "name": "Heard Island and McDonald Islands"
     },
     "HN": {
         "country_code": "HN",
