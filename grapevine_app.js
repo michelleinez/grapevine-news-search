@@ -10,7 +10,7 @@ var server = require('http').Server(app);
 //any socket made with socket io library will be bound to the server
 var io = require('socket.io')(server);
 
-var port = 8081
+var port = 8081;
 //listens on localhost:8081 for event emissions
 server.listen(port);
 console.log('listening on port ' + port);
@@ -27,7 +27,6 @@ grapevine.init(function(){
 		var search_query;
 		//when we receive search message, do function(data)
 		socket.on('search', function (data) {
-			console.log('received search query ' + Object.keys(data));
 
 			//data = JSON.parse(data);
 			var search_query = data.search_query;
@@ -41,7 +40,7 @@ grapevine.init(function(){
 					console.log('country simulated ' + countries[i]);
 					socket.emit('news', { country_code: countries[i], news: result });
 				});			
-			}
+			};
 			for (var i = 0; i < countries.length; i++)
 			{
 				grapes(i);
@@ -51,7 +50,8 @@ grapevine.init(function(){
 			console.log("Error: " + err);
 		});
 
-		//send an ack message 
+		//send an ack message
+		// note that "emit" does not
 		socket.emit('ack', countries);
 
 	});

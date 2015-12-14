@@ -10,7 +10,7 @@
     "AE": {
         "country_code": "AE",
         "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "AR",
         "latitude": 24.0002488,
         "longitude": 53.9994829,
         "name": "UNITED ARAB EMIRATES"
@@ -74,7 +74,7 @@
     "AR": {
         "country_code": "AR",
         "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ES",
         "latitude": -35.0039032,
         "longitude": -65.2699754,
         "name": "ARGENTINA"
