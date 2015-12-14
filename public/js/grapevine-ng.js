@@ -2,7 +2,12 @@
 	function(){
 		var app = angular.module('grapevine', ['ui.bootstrap']);
 
-
+		app.filter('html', ['$sce', function ($sce) { 
+		    return function (text) {
+		        return $sce.trustAsHtml(text);
+		    };    
+		}]);
+		
 		app.controller('SocketController', function($scope){
 
 			// create a map in the "map" div, set the view to a given place and zoom
@@ -54,12 +59,26 @@
 			var socket = io.connect('http://127.0.0.1:8081');
 			//$scope.socket=socket;
 			var that = this;
+			var displaySelectionAlert;
+			$scope.loaded=false;
+			$scope.numChecked=0;
 
 			socket.on('ack', function (data) {
-				console.log(data);
 
 				$scope.countryClick = function(country) {
 					country.checked = !country.checked;
+					if(country.checked){
+						$scope.numChecked++;
+					} else {
+						$scope.numChecked--;
+					}
+					if($scope.numChecked>3){
+						$scope.displaySelectionAlert=true;
+						country.checked = !country.checked;
+						$scope.numChecked--;
+					}else{
+						$scope.displaySelectionAlert=false;
+					}
 					updateMarker(country);
 					return
 				}
@@ -68,26 +87,30 @@
 					return country.checked ?  "fa fa-check-square-o" : "fa fa-square-o";
 				}
 
-				//doesnt work yet...supposed to update country list to implement autocomplete of input
+				$scope.columns = function() {
+					if($scope.numChecked==1){
+						return "col-xs-12";
+					} else if($scope.numChecked==2){
+						return "col-xs-6";
+					} else {
+						return "col-xs-4";
+					}
+				}
+
+				//implements autocomplete for country input
 				$scope.updateList = function(countryInput){
-					console.log("meep");
 					for(country in data){
 						if(countryInput==''){
-							console.log('blank input');
 							continue;
 						}
 						if(data[country]['name'].toLowerCase().indexOf(countryInput.toLowerCase()) !== -1){
-							console.log('country',data[country]['name'].toLowerCase());
-							console.log(countryInput);
 							data[country]['display']=true;
-							console.log(data[country]['display']);
 						}else{
-							console.log('country',data[country]['name'].toLowerCase());
 							data[country]['display']=false;
-							console.log(data[country]['display']);
 						}
 					}
 				}
+
 
 /*
 				socket.emit('search', 'gorilla attacks');
@@ -113,7 +136,6 @@
 				
 				//pin all of the countries on the map
 				for(country in that.countries){
-					console.log(that.countries[country]);
 					that.countries[country]['marker'] = L.marker([that.countries[country].latitude, that.countries[country].longitude], {icon: markerIcon, title: that.countries[country]['name']});
 					var options = {
 						  offset:  new L.Point(2, 10),
@@ -125,18 +147,34 @@
 						map.addLayer(that.countries[country]['marker']);
 				}
 			});
-	
+			$scope.displaySearch=true;
+
 			$scope.go = function(query) {
+				$scope.displaySearch = false;
+				$scope.displaySelectionAlert=false;
 				var data = {};
 				data.search_query = query;
 				data.countries = Object.keys(that.countries).filter(function(country){ return that.countries[country].checked; });
 				socket.emit('search', data);
 			};
 
+			//confused about this part...-Michelle
+			$scope.displayLoading = function() {
+				return !$scope.displaySearch && !$scope.loaded;
+			}
+
+			$scope.titleCase = function(str){
+				return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+			}
+
 			socket.on('news', function(news) {
-				// Michelle here's the news
-				console.log(news);
+				if(!that.news){
+					$scope.$apply(function(){ that.news = []; });
+				}
+				$scope.$apply(function(){ that.news.push(news); });
+				$scope.loaded = true;
 			});
+
 			socket.on('error', function(err){
 				console.log("error: " + err);
 			});

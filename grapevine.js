@@ -190,6 +190,7 @@ var grapevine = {
 		var to_language = 'fr';
 		this.translate(search_query, from_language, to_language, function(result){
 			var translation = result.data.translations[0].translatedText;
+			console.log('translated ' + search_query + ' to ' + translation);
 			//translation = querystring.escape(translation);
 			//console.log(translation);
 			that.get_news_about(translation, country_code, function(result){

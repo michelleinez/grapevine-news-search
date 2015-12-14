@@ -12,6 +12,7 @@
     <link href="./css/leaflet.css" rel="stylesheet">
     <link href="./css/select.css" rel="stylesheet">
     <link href="./css/grapevine.css" rel="stylesheet">
+    <link href="./css/news.css" rel="stylesheet">
     <!--script type="text/javascript" src="./js/jquery.js"></script-->
     <!--script type="text/javascript" src="./js/bootstrap.min.js"></script-->
 </head>
@@ -20,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-2">
-                <img class="gv-logo" src="img/grapevineLogo.png">
+                <a href="/"><img class="gv-logo" src="img/grapevineLogo.png"></a>
             </div>
             <div class="col-xs-9 col-xs-offset-1">
                 <ul class="country-tags">
@@ -35,11 +36,12 @@
         <div class="row">
             <hr>
         </div>
-        <div class="col-xs-12 text-center description">
+        <div ng-show="displaySearch" class="col-xs-12 text-center description">
             Search for news stories in other languages around the world. Choose a few countries and enter your query at the bottom of the page.
         </div>
-    </div>
-    <div class="row spacer">
+    
+
+    <div class="row spacer" ng-show="displaySearch" ng-init="displaySearch=true">
         <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
             <div class="row spacer">
                 <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-0">
@@ -77,6 +79,29 @@
             {{countryInput}}
         </div>
     </div>
+
+    <a href="#">
+        <div ng-click="displaySelectionAlert=!displaySelectionAlert" ng-init="displaySelectionAlert=false" ng-show="displaySelectionAlert" class="country-selection-alert">
+            <i class="fa fa-times fa-lg"></i>    Sorry, grapevine currently only supports three countries at a time.
+        </div>
+    </a>
+    <div ng-class="text-center" class="loading-spinner" ng-show="displayLoading()">
+        <img src="img/preloader.gif"></img>
+    </div>
+    <div class="row" ng-hide="displaySearch">
+            <div ng-repeat="searchedCountry in socket.news" ng-class="columns()">
+            <div class="news-panel">
+                <div class="news-wrapper">
+                    <h3 class="indent">{{titleCase(socket.countries[searchedCountry.country_code].name)}}</h3>
+                    <div class="country-news">
+                        <div ng-repeat="newsStory in searchedCountry['news']" class="news-story">
+                            <h4 ng-bind-html-unsafe='newsStory["title"]'></h4>
+                            <p>{{newsStory["summary"]}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
     <script type="text/javascript" src="./js/leaflet.js"></script>

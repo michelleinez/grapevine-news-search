@@ -1,7 +1,9 @@
-.news-story {
-	border: 1px solid #EEE;
+.country-news {
 	padding: 10px;
 	background-color: white;
+}
+.news-story {
+	border-bottom: 1px solid #EEE;
 }
 .news-panel {
 	background-color: #EEE;

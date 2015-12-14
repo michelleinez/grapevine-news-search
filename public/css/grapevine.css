@@ -19,7 +19,25 @@ h4 {
 	font-family: 'PT Sans';
 }
 
+.country-selection-alert {
+	position: fixed;
+	padding: 13px;
+	top: 30px;
+	right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 500px;
+	horizontal-align: center;
+	border-radius: 4px;
+	background-color: #9999ff;
+	border: 1px solid #4d4dff;
+	color: #FFF;
+}
 
+.loading-spinner{
+	text-align: center;
+}
 
 .title {
 	background-color: #000;
