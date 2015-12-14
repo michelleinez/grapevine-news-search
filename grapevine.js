@@ -205,11 +205,9 @@ var grapevine = {
 				var translator = function(i)
 				{
 					that.translate(news_stories[i].summary, to_language, from_language, function(result){
-						var translation = result;
-						news_stories[i].summary = translation;
+						news_stories[i].summary = xhtmlUnescape(result);
 						that.translate(news_stories[i].title, to_language, from_language, function(result){
-							var translation = result;
-							news_stories[i].title = translation;
+							news_stories[i].title = xhtmlUnescape(result);
 							console.log('news_stories[' + i + '] = ' + news_stories[i].title + ': ' + news_stories[i].summary);
 							if (++translated == news_stories.length)
 							{
@@ -217,6 +215,15 @@ var grapevine = {
 							}
 						});
 					});
+				};
+				var xhtmlUnescape = function(escapedXhtml) {
+					escapedXhtml = escapedXhtml.replace(/&quot;/g, '"');
+					escapedXhtml = escapedXhtml.replace(/&amp;/g, '&');
+					escapedXhtml = escapedXhtml.replace(/&lt;/g, '<');
+					escapedXhtml = escapedXhtml.replace(/&gt;/g, '>');
+					escapedXhtml = escapedXhtml.replace(/&#39;/g, "'");
+
+					return escapedXhtml;
 				};
 				for (var i = 0; i < results.length; i++)
 				{
@@ -230,7 +237,7 @@ var grapevine = {
 					}
 
 					news_story.summary = striptags(news_story.summary);
-					//news_story.title = striptags(news_story.title);
+					news_story.title = striptags(news_story.title);
 					news_stories.push(news_story);
 					translator(i);
 				}
