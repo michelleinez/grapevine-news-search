@@ -1,1994 +1,1766 @@
 {
     "AD": {
         "country_code": "AD",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ca",
         "latitude": 42.5407167,
         "longitude": 1.5732033,
-        "name": "ANDORRA"
+        "name": "Andorra"
     },
     "AE": {
         "country_code": "AE",
-        "language": "ENGLISH",
-        "language_code": "AR",
+        "language_code": "ar",
         "latitude": 24.0002488,
         "longitude": 53.9994829,
-        "name": "UNITED ARAB EMIRATES"
+        "name": "United Arab Emirates"
     },
     "AF": {
         "country_code": "AF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fa",
         "latitude": 33.0000866,
         "longitude": 64.9998468,
-        "name": "AFGHANISTAN"
+        "name": "Afghanistan"
     },
     "AG": {
         "country_code": "AG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 17.079128,
         "longitude": -61.8222516,
-        "name": "ANTIGUA AND BARBUDA"
+        "name": "Antigua and Barbuda"
     },
     "AI": {
         "country_code": "AI",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 18.1954947,
         "longitude": -63.0750234,
-        "name": "ANGUILLA"
+        "name": "Anguilla"
     },
     "AL": {
         "country_code": "AL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "sq",
         "latitude": 41.000028,
         "longitude": 19.9999619,
-        "name": "ALBANIA"
+        "name": "Albania"
     },
     "AM": {
         "country_code": "AM",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 40.7696272,
-        "longitude": 44.6736646,
-        "name": "ARMENIA"
+        "language_code": "hy",
+        "latitude": 40.13217745,
+        "longitude": 45.3695418543568,
+        "name": "Armenia"
+    },
+    "AN": {
+        "country_code": "AN",
+        "language_code": "nl",
+        "latitude": 12.1546009,
+        "longitude": -68.9404722492907,
+        "name": "Netherlands Antilles"
     },
     "AO": {
         "country_code": "AO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pt",
         "latitude": -11.8775768,
         "longitude": 17.5691241,
-        "name": "ANGOLA"
+        "name": "Angola"
     },
     "AQ": {
         "country_code": "AQ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "",
         "latitude": -82.108182,
         "longitude": 34.378236,
-        "name": "ANTARCTICA"
+        "name": "Antarctica"
     },
     "AR": {
         "country_code": "AR",
-        "language": "ENGLISH",
-        "language_code": "ES",
+        "language_code": "es",
         "latitude": -35.0039032,
         "longitude": -65.2699754,
-        "name": "ARGENTINA"
+        "name": "Argentina"
     },
     "AS": {
         "country_code": "AS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -14.30063085,
         "longitude": -170.695974691655,
-        "name": "AMERICAN SAMOA"
+        "name": "American Samoa"
     },
     "AT": {
         "country_code": "AT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "de",
         "latitude": 47.2000338,
         "longitude": 13.199959,
-        "name": "AUSTRIA"
+        "name": "Austria"
     },
     "AU": {
         "country_code": "AU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -27.0,
         "longitude": 133.0,
-        "name": "AUSTRALIA"
+        "name": "Australia"
     },
     "AW": {
         "country_code": "AW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "nl",
         "latitude": 12.5013629,
         "longitude": -69.9618475,
-        "name": "ARUBA"
+        "name": "Aruba"
     },
     "AX": {
         "country_code": "AX",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "sv",
         "latitude": 60.2166218,
         "longitude": 19.9438638,
-        "name": "ALAND ISLANDS"
+        "name": "Aland Islands"
     },
     "AZ": {
         "country_code": "AZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "az",
         "latitude": 40.1636668,
         "longitude": 47.8207429,
-        "name": "AZERBAIJAN"
+        "name": "Azerbaijan"
     },
     "BA": {
         "country_code": "BA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "bs",
         "latitude": 44.3092405,
         "longitude": 17.5859673,
-        "name": "BOSNIA AND HERZEGOVINA"
+        "name": "Bosnia and Herzegovina"
     },
     "BB": {
         "country_code": "BB",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 13.1500331,
         "longitude": -59.5250305,
-        "name": "BARBADOS"
+        "name": "Barbados"
     },
     "BD": {
         "country_code": "BD",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "bn",
         "latitude": 24.4768783,
         "longitude": 90.2932426,
-        "name": "BANGLADESH"
+        "name": "Bangladesh"
     },
     "BE": {
         "country_code": "BE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "nl",
         "latitude": 50.6407351,
         "longitude": 4.66696,
-        "name": "BELGIUM"
+        "name": "Belgium"
     },
     "BF": {
         "country_code": "BF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 12.0753083,
         "longitude": -1.6880314,
-        "name": "BURKINA FASO"
+        "name": "Burkina Faso"
     },
     "BG": {
         "country_code": "BG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "bg",
         "latitude": 42.6073975,
         "longitude": 25.4856617,
-        "name": "BULGARIA"
+        "name": "Bulgaria"
     },
     "BH": {
         "country_code": "BH",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 26.1551249,
         "longitude": 50.5344606,
-        "name": "BAHRAIN"
+        "name": "Bahrain"
     },
     "BI": {
         "country_code": "BI",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -3.3634357,
         "longitude": 29.8870575,
-        "name": "BURUNDI"
+        "name": "Burundi"
     },
     "BJ": {
         "country_code": "BJ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 9.5293472,
         "longitude": 2.2584408,
-        "name": "BENIN"
+        "name": "Benin"
     },
     "BL": {
         "country_code": "BL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 17.8962582,
         "longitude": -62.8299256,
-        "name": "SAINT BARTHELEMY"
+        "name": "Saint Barthelemy"
     },
     "BM": {
         "country_code": "BM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 32.3018217,
         "longitude": -64.7603583,
-        "name": "BERMUDA"
+        "name": "Bermuda"
     },
     "BN": {
         "country_code": "BN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ms",
         "latitude": 4.4137155,
         "longitude": 114.5653908,
-        "name": "BRUNEI DARUSSALAM"
+        "name": "Brunei"
     },
     "BO": {
         "country_code": "BO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": -17.0568696,
         "longitude": -64.9912286,
-        "name": "BOLIVIA, PLURINATIONAL STATE OF"
+        "name": "Bolivia"
     },
     "BQ": {
         "country_code": "BQ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "nl",
         "latitude": 17.6381805,
         "longitude": -63.2452946,
-        "name": "BONAIRE, SINT EUSTATIUS AND SABA"
+        "name": "Bonaire, Saint Eustatius and Saba "
     },
     "BR": {
         "country_code": "BR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pt",
         "latitude": -10.3333333,
         "longitude": -53.2,
-        "name": "BRAZIL"
+        "name": "Brazil"
     },
     "BS": {
         "country_code": "BS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 24.7736546,
         "longitude": -78.0000547,
-        "name": "BAHAMAS"
+        "name": "Bahamas"
     },
     "BT": {
         "country_code": "BT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "dz",
         "latitude": 27.549511,
         "longitude": 90.5119273,
-        "name": "BHUTAN"
+        "name": "Bhutan"
     },
     "BV": {
         "country_code": "BV",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "",
         "latitude": -54.41960765,
         "longitude": 3.36132045325744,
-        "name": "BOUVET ISLAND"
+        "name": "Bouvet Island"
     },
     "BW": {
         "country_code": "BW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -23.1681782,
         "longitude": 24.5928742,
-        "name": "BOTSWANA"
+        "name": "Botswana"
     },
     "BY": {
         "country_code": "BY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "be",
         "latitude": 53.4250605,
         "longitude": 27.6971358,
-        "name": "BELARUS"
+        "name": "Belarus"
     },
     "BZ": {
         "country_code": "BZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 16.8259793,
         "longitude": -88.7600927,
-        "name": "BELIZE"
+        "name": "Belize"
     },
     "CA": {
         "country_code": "CA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 61.0666922,
         "longitude": -107.9917071,
-        "name": "CANADA"
+        "name": "Canada"
     },
     "CC": {
         "country_code": "CC",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": -12.1691894,
-        "longitude": 96.8301442,
-        "name": "COCOS (KEELING) ISLANDS"
+        "language_code": "ms",
+        "latitude": 39.5620658,
+        "longitude": 2.40138559247193,
+        "name": "Cocos Islands"
     },
     "CD": {
         "country_code": "CD",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -2.9814344,
         "longitude": 23.8222636,
-        "name": "CONGO, THE DEMOCRATIC REPUBLIC OF THE"
+        "name": "Democratic Republic of the Congo"
     },
     "CF": {
         "country_code": "CF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 25.2183959,
         "longitude": 55.1752385762154,
-        "name": "CENTRAL AFRICAN REPUBLIC"
+        "name": "Central African Republic"
     },
     "CG": {
         "country_code": "CG",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": -2.9814344,
-        "longitude": 23.8222636,
-        "name": "CONGO"
+        "language_code": "fr",
+        "latitude": -0.7264327,
+        "longitude": 15.6419155,
+        "name": "Republic of the Congo"
     },
     "CH": {
         "country_code": "CH",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "de",
         "latitude": 46.7985624,
         "longitude": 8.2319736,
-        "name": "SWITZERLAND"
+        "name": "Switzerland"
     },
     "CI": {
         "country_code": "CI",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 7.9897371,
         "longitude": -5.5679458,
-        "name": "COTE D'IVOIRE"
+        "name": "Ivory Coast"
     },
     "CK": {
         "country_code": "CK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -16.0492781,
         "longitude": -160.3554851,
-        "name": "COOK ISLANDS"
+        "name": "Cook Islands"
     },
     "CL": {
         "country_code": "CL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": -31.7613365,
         "longitude": -71.3187697,
-        "name": "CHILE"
+        "name": "Chile"
     },
     "CM": {
         "country_code": "CM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 4.6125522,
         "longitude": 13.1535811,
-        "name": "CAMEROON"
+        "name": "Cameroon"
     },
     "CN": {
         "country_code": "CN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "zh",
         "latitude": 35.000074,
         "longitude": 104.999927,
-        "name": "CHINA"
+        "name": "China"
     },
     "CO": {
         "country_code": "CO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 2.8930783,
         "longitude": -73.7845072,
-        "name": "COLOMBIA"
+        "name": "Colombia"
     },
     "CR": {
         "country_code": "CR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 10.2735633,
         "longitude": -84.0739102,
-        "name": "COSTA RICA"
+        "name": "Costa Rica"
+    },
+    "CS": {
+        "country_code": "CS",
+        "language_code": "cu",
+        "latitude": 42.7525791,
+        "longitude": 20.027953,
+        "name": "Serbia and Montenegro"
     },
     "CU": {
         "country_code": "CU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 23.0131338,
         "longitude": -80.8328748,
-        "name": "CUBA"
+        "name": "Cuba"
     },
     "CV": {
         "country_code": "CV",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pt",
         "latitude": 16.0000552,
         "longitude": -24.0083947,
-        "name": "CAPE VERDE"
+        "name": "Cape Verde"
     },
     "CW": {
         "country_code": "CW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "nl",
         "latitude": 12.1845,
         "longitude": -68.9640917594077,
-        "name": "CURACAO"
+        "name": "Curacao"
     },
     "CX": {
         "country_code": "CX",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -10.4878279,
         "longitude": 105.6329821,
-        "name": "CHRISTMAS ISLAND"
+        "name": "Christmas Island"
     },
     "CY": {
         "country_code": "CY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "el",
         "latitude": 34.9823018,
         "longitude": 33.1451285,
-        "name": "CYPRUS"
+        "name": "Cyprus"
     },
     "CZ": {
         "country_code": "CZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "cs",
         "latitude": 49.8167003,
         "longitude": 15.4749544,
-        "name": "CZECH REPUBLIC"
+        "name": "Czech Republic"
     },
     "DE": {
         "country_code": "DE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "de",
         "latitude": 51.0834196,
         "longitude": 10.4234469,
-        "name": "GERMANY"
+        "name": "Germany"
     },
     "DJ": {
         "country_code": "DJ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 11.85677545,
         "longitude": 42.7577845199437,
-        "name": "DJIBOUTI"
+        "name": "Djibouti"
     },
     "DK": {
         "country_code": "DK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "da",
         "latitude": 55.670249,
         "longitude": 10.3333283,
-        "name": "DENMARK"
+        "name": "Denmark"
     },
     "DM": {
         "country_code": "DM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 15.4113138,
         "longitude": -61.3653618,
-        "name": "DOMINICA"
+        "name": "Dominica"
     },
     "DO": {
         "country_code": "DO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 19.094175,
         "longitude": -70.3012705,
-        "name": "DOMINICAN REPUBLIC"
+        "name": "Dominican Republic"
     },
     "DZ": {
         "country_code": "DZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 28.0000272,
         "longitude": 2.9999825,
-        "name": "ALGERIA"
+        "name": "Algeria"
     },
     "EC": {
         "country_code": "EC",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": -1.3397668,
         "longitude": -79.3666965,
-        "name": "ECUADOR"
+        "name": "Ecuador"
     },
     "EE": {
         "country_code": "EE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "et",
         "latitude": 58.7523778,
         "longitude": 25.3319078,
-        "name": "ESTONIA"
+        "name": "Estonia"
     },
     "EG": {
         "country_code": "EG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 26.2540493,
         "longitude": 29.2675469,
-        "name": "EGYPT"
+        "name": "Egypt"
     },
     "EH": {
         "country_code": "EH",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 24.1464393,
-        "longitude": -13.8661346198405,
-        "name": "WESTERN SAHARA"
+        "language_code": "ar",
+        "latitude": 24.1797324,
+        "longitude": -13.7667848,
+        "name": "Western Sahara"
     },
     "ER": {
         "country_code": "ER",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "aa",
         "latitude": 15.9500319,
         "longitude": 37.9999668,
-        "name": "ERITREA"
+        "name": "Eritrea"
     },
     "ES": {
         "country_code": "ES",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 40.0028028,
         "longitude": -4.003104,
-        "name": "SPAIN"
+        "name": "Spain"
     },
     "ET": {
         "country_code": "ET",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "am",
         "latitude": 10.2116702,
         "longitude": 38.6521203,
-        "name": "ETHIOPIA"
+        "name": "Ethiopia"
     },
     "FI": {
         "country_code": "FI",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fi",
         "latitude": 63.2467777,
         "longitude": 25.9209164,
-        "name": "FINLAND"
+        "name": "Finland"
     },
     "FJ": {
         "country_code": "FJ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -18.1239696,
         "longitude": 179.0122737,
-        "name": "FIJI"
+        "name": "Fiji"
     },
     "FK": {
         "country_code": "FK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -51.9666424,
         "longitude": -59.5500387,
-        "name": "FALKLAND ISLANDS (MALVINAS)"
+        "name": "Falkland Islands"
     },
     "FM": {
         "country_code": "FM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 5.5600565,
         "longitude": 150.1982846,
-        "name": "MICRONESIA, FEDERATED STATES OF"
+        "name": "Micronesia"
     },
     "FO": {
         "country_code": "FO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fo",
         "latitude": 61.8489975,
         "longitude": -6.91612291886872,
-        "name": "FAROE ISLANDS"
+        "name": "Faroe Islands"
     },
     "FR": {
         "country_code": "FR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 46.603354,
         "longitude": 1.8883335,
-        "name": "FRANCE"
+        "name": "France"
     },
     "GA": {
         "country_code": "GA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -0.8999695,
         "longitude": 11.6899699,
-        "name": "GABON"
+        "name": "Gabon"
     },
     "GB": {
         "country_code": "GB",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 54.7023545,
         "longitude": -3.2765753,
-        "name": "UNITED KINGDOM"
+        "name": "United Kingdom"
     },
     "GD": {
         "country_code": "GD",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 12.1360374,
         "longitude": -61.6904045,
-        "name": "GRENADA"
+        "name": "Grenada"
     },
     "GE": {
         "country_code": "GE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ka",
         "latitude": 32.3293809,
         "longitude": -83.1137366,
-        "name": "GEORGIA"
+        "name": "Georgia"
     },
     "GF": {
         "country_code": "GF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 4.0039882,
         "longitude": -52.999998,
-        "name": "FRENCH GUIANA"
+        "name": "French Guiana"
     },
     "GG": {
         "country_code": "GG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 49.46229125,
         "longitude": -2.58120210032944,
-        "name": "GUERNSEY"
+        "name": "Guernsey"
     },
     "GH": {
         "country_code": "GH",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 8.0300284,
         "longitude": -1.0800271,
-        "name": "GHANA"
+        "name": "Ghana"
     },
     "GI": {
         "country_code": "GI",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 36.10674695,
         "longitude": -5.33527708348356,
-        "name": "GIBRALTAR"
+        "name": "Gibraltar"
     },
     "GL": {
         "country_code": "GL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "kl",
         "latitude": 77.6192349,
         "longitude": -42.8125967,
-        "name": "GREENLAND"
+        "name": "Greenland"
     },
     "GM": {
         "country_code": "GM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 13.470062,
         "longitude": -15.4900464,
-        "name": "GAMBIA"
+        "name": "Gambia"
     },
     "GN": {
         "country_code": "GN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 10.7226226,
         "longitude": -10.7083587,
-        "name": "GUINEA"
+        "name": "Guinea"
     },
     "GP": {
         "country_code": "GP",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 16.2490067,
         "longitude": -61.5650444,
-        "name": "GUADELOUPE"
+        "name": "Guadeloupe"
     },
     "GQ": {
         "country_code": "GQ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 1.613172,
         "longitude": 10.5170357,
-        "name": "EQUATORIAL GUINEA"
+        "name": "Equatorial Guinea"
     },
     "GR": {
         "country_code": "GR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "el",
         "latitude": 39.000041,
         "longitude": 21.9999569,
-        "name": "GREECE"
+        "name": "Greece"
     },
     "GS": {
         "country_code": "GS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -54.8432857,
         "longitude": -35.8090698,
-        "name": "SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS"
+        "name": "South Georgia and the South Sandwich Islands"
     },
     "GT": {
         "country_code": "GT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 15.6356088,
         "longitude": -89.8988087,
-        "name": "GUATEMALA"
+        "name": "Guatemala"
     },
     "GU": {
         "country_code": "GU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 13.4459805,
         "longitude": 144.7391922,
-        "name": "GUAM"
+        "name": "Guam"
     },
     "GW": {
         "country_code": "GW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pt",
         "latitude": 12.100035,
         "longitude": -14.9000214,
-        "name": "GUINEA-BISSAU"
+        "name": "Guinea-Bissau"
     },
     "GY": {
         "country_code": "GY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 4.8417097,
         "longitude": -58.6416891,
-        "name": "GUYANA"
+        "name": "Guyana"
     },
     "HK": {
         "country_code": "HK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "zh",
         "latitude": 22.2793278,
         "longitude": 114.1628131,
-        "name": "HONG KONG"
+        "name": "Hong Kong"
     },
     "HM": {
         "country_code": "HM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "",
         "latitude": -53.0242765,
         "longitude": 72.9231353,
-        "name": "HEARD ISLAND AND MCDONALD ISLANDS"
+        "name": "Heard Island and McDonald Islands"
     },
     "HN": {
         "country_code": "HN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 15.0610686,
         "longitude": -84.5978534,
-        "name": "HONDURAS"
+        "name": "Honduras"
     },
     "HR": {
         "country_code": "HR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "hr",
         "latitude": 45.5643442,
         "longitude": 17.0118954,
-        "name": "CROATIA"
+        "name": "Croatia"
     },
     "HT": {
         "country_code": "HT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ht",
         "latitude": 19.1399952,
         "longitude": -72.3570972,
-        "name": "HAITI"
+        "name": "Haiti"
     },
     "HU": {
         "country_code": "HU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "hu",
         "latitude": 47.1817585,
         "longitude": 19.5060937,
-        "name": "HUNGARY"
+        "name": "Hungary"
     },
     "ID": {
         "country_code": "ID",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "id",
         "latitude": -4.7993356,
         "longitude": 114.5632032,
-        "name": "INDONESIA"
+        "name": "Indonesia"
     },
     "IE": {
         "country_code": "IE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 52.865196,
         "longitude": -7.9794599,
-        "name": "IRELAND"
+        "name": "Ireland"
     },
     "IL": {
         "country_code": "IL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "he",
         "latitude": 30.8760272,
         "longitude": 35.0015196,
-        "name": "ISRAEL"
+        "name": "Israel"
     },
     "IM": {
         "country_code": "IM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 54.1936805,
         "longitude": -4.5591148,
-        "name": "ISLE OF MAN"
+        "name": "Isle of Man"
     },
     "IN": {
         "country_code": "IN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 22.3511148,
         "longitude": 78.6677428,
-        "name": "INDIA"
+        "name": "India"
     },
     "IO": {
         "country_code": "IO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -6.4157192,
         "longitude": 72.1173961,
-        "name": "BRITISH INDIAN OCEAN TERRITORY"
+        "name": "British Indian Ocean Territory"
     },
     "IQ": {
         "country_code": "IQ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 33.0955793,
         "longitude": 44.1749775,
-        "name": "IRAQ"
+        "name": "Iraq"
     },
     "IR": {
         "country_code": "IR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fa",
         "latitude": 32.9407496,
         "longitude": 52.9471344,
-        "name": "IRAN, ISLAMIC REPUBLIC OF"
+        "name": "Iran"
     },
     "IS": {
         "country_code": "IS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "is",
         "latitude": 64.9841821,
         "longitude": -18.1059013,
-        "name": "ICELAND"
+        "name": "Iceland"
     },
     "IT": {
         "country_code": "IT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "it",
         "latitude": 42.6384261,
         "longitude": 12.674297,
-        "name": "ITALY"
+        "name": "Italy"
     },
     "JE": {
         "country_code": "JE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 49.2214561,
         "longitude": -2.1358386,
-        "name": "JERSEY"
+        "name": "Jersey"
     },
     "JM": {
         "country_code": "JM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 18.1850507,
         "longitude": -77.3947693,
-        "name": "JAMAICA"
+        "name": "Jamaica"
     },
     "JO": {
         "country_code": "JO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 31.1667049,
         "longitude": 36.941628,
-        "name": "JORDAN"
+        "name": "Jordan"
     },
     "JP": {
         "country_code": "JP",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ja",
         "latitude": 36.5748441,
         "longitude": 139.2394179,
-        "name": "JAPAN"
+        "name": "Japan"
     },
     "KE": {
         "country_code": "KE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 1.4419683,
         "longitude": 38.4313975,
-        "name": "KENYA"
+        "name": "Kenya"
     },
     "KG": {
         "country_code": "KG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ky",
         "latitude": 41.5089324,
         "longitude": 74.724091,
-        "name": "KYRGYZSTAN"
+        "name": "Kyrgyzstan"
     },
     "KH": {
         "country_code": "KH",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "km",
         "latitude": 13.5066394,
         "longitude": 104.869423,
-        "name": "CAMBODIA"
+        "name": "Cambodia"
     },
     "KI": {
         "country_code": "KI",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 0.4483283,
         "longitude": -171.6645388,
-        "name": "KIRIBATI"
+        "name": "Kiribati"
     },
     "KM": {
         "country_code": "KM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": -12.2045176,
         "longitude": 44.2832964,
-        "name": "COMOROS"
+        "name": "Comoros"
     },
     "KN": {
         "country_code": "KN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 17.3462278,
         "longitude": -62.7687277,
-        "name": "SAINT KITTS AND NEVIS"
+        "name": "Saint Kitts and Nevis"
     },
     "KP": {
         "country_code": "KP",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 38.75836,
-        "longitude": 127.592468,
-        "name": "KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF"
+        "language_code": "ko",
+        "latitude": 40.3123959,
+        "longitude": 127.399971,
+        "name": "North Korea"
     },
     "KR": {
         "country_code": "KR",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 35.3985008,
-        "longitude": 127.937111,
-        "name": "KOREA, REPUBLIC OF"
+        "language_code": "ko",
+        "latitude": 36.5748441,
+        "longitude": 139.2394179,
+        "name": "South Korea"
     },
     "KW": {
         "country_code": "KW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 29.2733964,
         "longitude": 47.4979476,
-        "name": "KUWAIT"
+        "name": "Kuwait"
     },
     "KY": {
         "country_code": "KY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 19.5417212,
         "longitude": -80.5667132,
-        "name": "CAYMAN ISLANDS"
+        "name": "Cayman Islands"
     },
     "KZ": {
         "country_code": "KZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "kk",
         "latitude": 47.2286086,
         "longitude": 65.2093197,
-        "name": "KAZAKHSTAN"
+        "name": "Kazakhstan"
     },
     "LA": {
         "country_code": "LA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "lo",
         "latitude": 20.0171109,
         "longitude": 103.378253,
-        "name": "LAO PEOPLE'S DEMOCRATIC REPUBLIC"
+        "name": "Laos"
     },
     "LB": {
         "country_code": "LB",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 33.8750629,
         "longitude": 35.843409,
-        "name": "LEBANON"
+        "name": "Lebanon"
     },
     "LC": {
         "country_code": "LC",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 13.8250489,
         "longitude": -60.975036,
-        "name": "SAINT LUCIA"
+        "name": "Saint Lucia"
     },
     "LI": {
         "country_code": "LI",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 47.15934115,
-        "longitude": 9.54693948514429,
-        "name": "LIECHTENSTEIN"
+        "language_code": "de",
+        "latitude": 47.1416307,
+        "longitude": 9.5531527,
+        "name": "Liechtenstein"
     },
     "LK": {
         "country_code": "LK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "si",
         "latitude": 7.878,
         "longitude": 80.7038245875,
-        "name": "SRI LANKA"
+        "name": "Sri Lanka"
     },
     "LR": {
         "country_code": "LR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 5.7499721,
         "longitude": -9.3658524,
-        "name": "LIBERIA"
+        "name": "Liberia"
     },
     "LS": {
         "country_code": "LS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -29.6039267,
         "longitude": 28.3350193,
-        "name": "LESOTHO"
+        "name": "Lesotho"
     },
     "LT": {
         "country_code": "LT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "lt",
         "latitude": 55.3500003,
         "longitude": 23.7499998,
-        "name": "LITHUANIA"
+        "name": "Lithuania"
     },
     "LU": {
         "country_code": "LU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "lb",
         "latitude": 49.8158683,
         "longitude": 6.1296751,
-        "name": "LUXEMBOURG"
+        "name": "Luxembourg"
     },
     "LV": {
         "country_code": "LV",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "lv",
         "latitude": 56.8666904,
         "longitude": 24.5999717,
-        "name": "LATVIA"
+        "name": "Latvia"
     },
     "LY": {
         "country_code": "LY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 26.8234472,
         "longitude": 18.1236723,
-        "name": "LIBYA"
+        "name": "Libya"
     },
     "MA": {
         "country_code": "MA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 31.1728192,
         "longitude": -7.3366043,
-        "name": "MOROCCO"
+        "name": "Morocco"
     },
     "MC": {
         "country_code": "MC",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 43.7311966,
         "longitude": 7.41964,
-        "name": "MONACO"
+        "name": "Monaco"
     },
     "MD": {
         "country_code": "MD",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ro",
         "latitude": 47.286747,
         "longitude": 28.5110236,
-        "name": "MOLDOVA, REPUBLIC OF"
+        "name": "Moldova"
     },
     "ME": {
         "country_code": "ME",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "sr",
         "latitude": 43.0285558,
         "longitude": 19.291739,
-        "name": "MONTENEGRO"
+        "name": "Montenegro"
     },
     "MF": {
         "country_code": "MF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 18.0814066,
         "longitude": -63.0467131,
-        "name": "SAINT MARTIN (FRENCH PART)"
+        "name": "Saint Martin"
     },
     "MG": {
         "country_code": "MG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -18.9249604,
         "longitude": 46.4416422,
-        "name": "MADAGASCAR"
+        "name": "Madagascar"
     },
     "MH": {
         "country_code": "MH",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "mh",
         "latitude": 6.9518742,
         "longitude": 170.9985095,
-        "name": "MARSHALL ISLANDS"
+        "name": "Marshall Islands"
     },
     "MK": {
         "country_code": "MK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "mk",
         "latitude": 41.6171214,
         "longitude": 21.7168387,
-        "name": "MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF"
+        "name": "Macedonia"
     },
     "ML": {
         "country_code": "ML",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 16.3700359,
         "longitude": -2.2900239,
-        "name": "MALI"
+        "name": "Mali"
     },
     "MM": {
         "country_code": "MM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "my",
         "latitude": 17.1750495,
         "longitude": 95.9999652,
-        "name": "MYANMAR"
+        "name": "Myanmar"
     },
     "MN": {
         "country_code": "MN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "mn",
         "latitude": 46.8250388,
         "longitude": 103.8499736,
-        "name": "MONGOLIA"
+        "name": "Mongolia"
     },
     "MO": {
         "country_code": "MO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "zh",
         "latitude": 22.1919514,
         "longitude": 113.5381216,
-        "name": "MACAO"
+        "name": "Macao"
     },
     "MP": {
         "country_code": "MP",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fil",
         "latitude": 14.1490205,
         "longitude": 145.213452483189,
-        "name": "NORTHERN MARIANA ISLANDS"
+        "name": "Northern Mariana Islands"
     },
     "MQ": {
         "country_code": "MQ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 14.6113732,
         "longitude": -60.9620777,
-        "name": "MARTINIQUE"
+        "name": "Martinique"
     },
     "MR": {
         "country_code": "MR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 20.2540382,
         "longitude": -9.2399263,
-        "name": "MAURITANIA"
+        "name": "Mauritania"
     },
     "MS": {
         "country_code": "MS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 16.7417041,
         "longitude": -62.1916844,
-        "name": "MONTSERRAT"
+        "name": "Montserrat"
     },
     "MT": {
         "country_code": "MT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "mt",
         "latitude": 27.5015719,
         "longitude": 85.2451666,
-        "name": "MALTA"
+        "name": "Malta"
     },
     "MU": {
         "country_code": "MU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -20.2759451,
         "longitude": 57.5703566,
-        "name": "MAURITIUS"
+        "name": "Mauritius"
     },
     "MV": {
         "country_code": "MV",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "dv",
         "latitude": 4.2218417,
         "longitude": 73.4867968,
-        "name": "MALDIVES"
+        "name": "Maldives"
     },
     "MW": {
         "country_code": "MW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ny",
         "latitude": -13.2687204,
         "longitude": 33.9301963,
-        "name": "MALAWI"
+        "name": "Malawi"
     },
     "MX": {
         "country_code": "MX",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 19.4325301,
         "longitude": -99.1332102,
-        "name": "MEXICO"
+        "name": "Mexico"
     },
     "MY": {
         "country_code": "MY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ms",
         "latitude": 2.3923759,
         "longitude": 112.8471939,
-        "name": "MALAYSIA"
+        "name": "Malaysia"
     },
     "MZ": {
         "country_code": "MZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pt",
         "latitude": -19.302233,
         "longitude": 34.9144977,
-        "name": "MOZAMBIQUE"
+        "name": "Mozambique"
     },
     "NA": {
         "country_code": "NA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -23.2335499,
         "longitude": 17.3231107,
-        "name": "NAMIBIA"
+        "name": "Namibia"
     },
     "NC": {
         "country_code": "NC",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -21.3019905,
         "longitude": 165.4880773,
-        "name": "NEW CALEDONIA"
+        "name": "New Caledonia"
     },
     "NE": {
         "country_code": "NE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 17.7356214,
         "longitude": 9.3238432,
-        "name": "NIGER"
+        "name": "Niger"
     },
     "NF": {
         "country_code": "NF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -29.02900945,
         "longitude": 167.958672246969,
-        "name": "NORFOLK ISLAND"
+        "name": "Norfolk Island"
     },
     "NG": {
         "country_code": "NG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 9.6000359,
         "longitude": 7.9999721,
-        "name": "NIGERIA"
+        "name": "Nigeria"
     },
     "NI": {
         "country_code": "NI",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 12.3724928,
         "longitude": -84.8700308,
-        "name": "NICARAGUA"
+        "name": "Nicaragua"
     },
     "NL": {
         "country_code": "NL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "nl",
         "latitude": 52.2379891,
         "longitude": 5.53460738161551,
-        "name": "NETHERLANDS"
+        "name": "Netherlands"
     },
     "NO": {
         "country_code": "NO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "no",
         "latitude": 64.574131,
         "longitude": 11.5270102892405,
-        "name": "NORWAY"
+        "name": "Norway"
     },
     "NP": {
         "country_code": "NP",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ne",
         "latitude": 28.1083178,
         "longitude": 84.0916787,
-        "name": "NEPAL"
+        "name": "Nepal"
     },
     "NR": {
         "country_code": "NR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "na",
         "latitude": -0.5249624,
         "longitude": 166.9333009,
-        "name": "NAURU"
+        "name": "Nauru"
     },
     "NU": {
         "country_code": "NU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "niu",
         "latitude": -19.0536414,
         "longitude": -169.8613411,
-        "name": "NIUE"
+        "name": "Niue"
     },
     "NZ": {
         "country_code": "NZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -41.5000831,
         "longitude": 172.8344077,
-        "name": "NEW ZEALAND"
+        "name": "New Zealand"
     },
     "OM": {
         "country_code": "OM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 21.0000287,
         "longitude": 57.0036901,
-        "name": "OMAN"
+        "name": "Oman"
     },
     "PA": {
         "country_code": "PA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 8.3096067,
         "longitude": -81.3066246,
-        "name": "PANAMA"
+        "name": "Panama"
     },
     "PE": {
         "country_code": "PE",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": -6.8699697,
-        "longitude": -75.0458515,
-        "name": "PERU"
+        "language_code": "es",
+        "latitude": -10.1199999,
+        "longitude": -76.2913223858673,
+        "name": "Peru"
     },
     "PF": {
         "country_code": "PF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -16.36534505,
         "longitude": -145.14410982521,
-        "name": "FRENCH POLYNESIA"
+        "name": "French Polynesia"
     },
     "PG": {
         "country_code": "PG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -5.6816069,
         "longitude": 144.2489081,
-        "name": "PAPUA NEW GUINEA"
+        "name": "Papua New Guinea"
     },
     "PH": {
         "country_code": "PH",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "tl",
         "latitude": 12.7503486,
         "longitude": 122.7312101,
-        "name": "PHILIPPINES"
+        "name": "Philippines"
     },
     "PK": {
         "country_code": "PK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ur",
         "latitude": 30.3308401,
         "longitude": 71.247499,
-        "name": "PAKISTAN"
+        "name": "Pakistan"
     },
     "PL": {
         "country_code": "PL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pl",
         "latitude": 52.0977181,
         "longitude": 19.0258159,
-        "name": "POLAND"
+        "name": "Poland"
     },
     "PM": {
         "country_code": "PM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 46.8374544,
         "longitude": -56.2120555,
-        "name": "SAINT PIERRE AND MIQUELON"
+        "name": "Saint Pierre and Miquelon"
     },
     "PN": {
         "country_code": "PN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -25.0657719,
         "longitude": -130.1017823,
-        "name": "PITCAIRN"
+        "name": "Pitcairn"
     },
     "PR": {
         "country_code": "PR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 18.2017809,
         "longitude": -66.5841246,
-        "name": "PUERTO RICO"
+        "name": "Puerto Rico"
     },
     "PS": {
         "country_code": "PS",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 30.8760272,
-        "longitude": 35.0015196,
-        "name": "PALESTINIAN, STATE OF"
+        "language_code": "ar",
+        "latitude": 31.649741,
+        "longitude": 35.162072,
+        "name": "Palestinian Territory"
     },
     "PT": {
         "country_code": "PT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pt",
         "latitude": 40.033265,
         "longitude": -7.8896263,
-        "name": "PORTUGAL"
+        "name": "Portugal"
     },
     "PW": {
         "country_code": "PW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pau",
         "latitude": 6.097367,
         "longitude": 133.313631,
-        "name": "PALAU"
+        "name": "Palau"
     },
     "PY": {
         "country_code": "PY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": -23.3165935,
         "longitude": -58.1693445,
-        "name": "PARAGUAY"
+        "name": "Paraguay"
     },
     "QA": {
         "country_code": "QA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 25.3336984,
         "longitude": 51.2295295,
-        "name": "QATAR"
+        "name": "Qatar"
     },
     "RE": {
         "country_code": "RE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -21.1309332,
         "longitude": 55.5265771,
-        "name": "REUNION"
+        "name": "Reunion"
     },
     "RO": {
         "country_code": "RO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ro",
         "latitude": 45.9852129,
         "longitude": 24.6859225,
-        "name": "ROMANIA"
+        "name": "Romania"
     },
     "RS": {
         "country_code": "RS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "sr",
         "latitude": 44.1534121,
         "longitude": 20.55144,
-        "name": "SERBIA"
+        "name": "Serbia"
     },
     "RU": {
         "country_code": "RU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ru",
         "latitude": 64.6863136,
         "longitude": 97.7453061,
-        "name": "RUSSIAN FEDERATION"
+        "name": "Russia"
     },
     "RW": {
         "country_code": "RW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "rw",
         "latitude": -1.9646631,
         "longitude": 30.0644358,
-        "name": "RWANDA"
+        "name": "Rwanda"
     },
     "SA": {
         "country_code": "SA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 25.6242618,
         "longitude": 42.3528328,
-        "name": "SAUDI ARABIA"
+        "name": "Saudi Arabia"
     },
     "SB": {
         "country_code": "SB",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -9.7354344,
         "longitude": 162.8288542,
-        "name": "SOLOMON ISLANDS"
+        "name": "Solomon Islands"
     },
     "SC": {
         "country_code": "SC",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -4.6574977,
         "longitude": 55.4540146,
-        "name": "SEYCHELLES"
+        "name": "Seychelles"
     },
     "SD": {
         "country_code": "SD",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 15.79125,
         "longitude": 30.3714240785933,
-        "name": "SUDAN"
+        "name": "Sudan"
     },
     "SE": {
         "country_code": "SE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "sv",
         "latitude": 59.6749712,
         "longitude": 14.5208584,
-        "name": "SWEDEN"
+        "name": "Sweden"
     },
     "SG": {
         "country_code": "SG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "cmn",
         "latitude": 1.2904527,
         "longitude": 103.852038,
-        "name": "SINGAPORE"
+        "name": "Singapore"
     },
     "SH": {
         "country_code": "SH",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -15.9919551,
         "longitude": -5.6999094,
-        "name": "SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA"
+        "name": "Saint Helena"
     },
     "SI": {
         "country_code": "SI",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "sl",
         "latitude": 45.8133113,
         "longitude": 14.4808369,
-        "name": "SLOVENIA"
+        "name": "Slovenia"
     },
     "SJ": {
         "country_code": "SJ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "no",
         "latitude": 78.7198519,
         "longitude": 20.3493328,
-        "name": "SVALBARD AND JAN MAYEN"
+        "name": "Svalbard and Jan Mayen"
     },
     "SK": {
         "country_code": "SK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "sk",
         "latitude": 48.7411522,
         "longitude": 19.4528646,
-        "name": "SLOVAKIA"
+        "name": "Slovakia"
     },
     "SL": {
         "country_code": "SL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 8.6400349,
         "longitude": -11.8400269,
-        "name": "SIERRA LEONE"
+        "name": "Sierra Leone"
     },
     "SM": {
         "country_code": "SM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "it",
         "latitude": 43.9458623,
         "longitude": 12.458306,
-        "name": "SAN MARINO"
+        "name": "San Marino"
     },
     "SN": {
         "country_code": "SN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 14.4750607,
         "longitude": -14.4529612,
-        "name": "SENEGAL"
+        "name": "Senegal"
     },
     "SO": {
         "country_code": "SO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "so",
         "latitude": 8.3676771,
         "longitude": 49.083416,
-        "name": "SOMALIA"
+        "name": "Somalia"
     },
     "SR": {
         "country_code": "SR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "nl",
         "latitude": 4.1413025,
         "longitude": -56.0771187,
-        "name": "SURINAME"
+        "name": "Suriname"
     },
     "SS": {
         "country_code": "SS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 7.8699431,
         "longitude": 29.6667897,
-        "name": "SOUTH SUDAN"
+        "name": "South Sudan"
     },
     "ST": {
         "country_code": "ST",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "pt",
         "latitude": 0.8875498,
         "longitude": 6.9648718,
-        "name": "SAO TOME AND PRINCIPE"
+        "name": "Sao Tome and Principe"
     },
     "SV": {
         "country_code": "SV",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 13.8000382,
         "longitude": -88.9140683,
-        "name": "EL SALVADOR"
+        "name": "El Salvador"
     },
     "SX": {
         "country_code": "SX",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "nl",
         "latitude": 17.9345,
         "longitude": -63.1539329807882,
-        "name": "SINT MAARTEN (DUTCH PART)"
+        "name": "Sint Maarten"
     },
     "SY": {
         "country_code": "SY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 34.8152564,
         "longitude": 38.4266844289349,
-        "name": "SYRIAN ARAB REPUBLIC"
+        "name": "Syria"
     },
     "SZ": {
         "country_code": "SZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -26.5624806,
         "longitude": 31.3991317,
-        "name": "SWAZILAND"
+        "name": "Swaziland"
     },
     "TC": {
         "country_code": "TC",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 21.7214683,
         "longitude": -71.6201783,
-        "name": "TURKS AND CAICOS ISLANDS"
+        "name": "Turks and Caicos Islands"
     },
     "TD": {
         "country_code": "TD",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 15.6134137,
         "longitude": 19.0156172,
-        "name": "CHAD"
+        "name": "Chad"
     },
     "TF": {
         "country_code": "TF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -44.1511785,
         "longitude": 63.8604556,
-        "name": "FRENCH SOUTHERN TERRITORIES"
+        "name": "French Southern Territories"
     },
     "TG": {
         "country_code": "TG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": 8.7800265,
         "longitude": 1.0199765,
-        "name": "TOGO"
+        "name": "Togo"
     },
     "TH": {
         "country_code": "TH",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "th",
         "latitude": 14.8971921,
         "longitude": 100.83273,
-        "name": "THAILAND"
+        "name": "Thailand"
     },
     "TJ": {
         "country_code": "TJ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "tg",
         "latitude": 38.6281733,
         "longitude": 70.8156541,
-        "name": "TAJIKISTAN"
+        "name": "Tajikistan"
     },
     "TK": {
         "country_code": "TK",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "tkl",
         "latitude": -9.1676396,
         "longitude": -171.8196878,
-        "name": "TOKELAU"
+        "name": "Tokelau"
     },
     "TL": {
         "country_code": "TL",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "tet",
         "latitude": -8.5151979,
         "longitude": 125.8375756,
-        "name": "TIMOR-LESTE"
+        "name": "East Timor"
     },
     "TM": {
         "country_code": "TM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "tk",
         "latitude": 39.3763807,
         "longitude": 59.3924609,
-        "name": "TURKMENISTAN"
+        "name": "Turkmenistan"
     },
     "TN": {
         "country_code": "TN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 33.8439408,
         "longitude": 9.400138,
-        "name": "TUNISIA"
+        "name": "Tunisia"
     },
     "TO": {
         "country_code": "TO",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "to",
         "latitude": -19.9160819,
         "longitude": -175.2026424,
-        "name": "TONGA"
+        "name": "Tonga"
     },
     "TR": {
         "country_code": "TR",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "tr",
         "latitude": 38.9597594,
         "longitude": 34.9249653,
-        "name": "TURKEY"
+        "name": "Turkey"
     },
     "TT": {
         "country_code": "TT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 10.8677845,
         "longitude": -60.9821067,
-        "name": "TRINIDAD AND TOBAGO"
+        "name": "Trinidad and Tobago"
     },
     "TV": {
         "country_code": "TV",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "tvl",
         "latitude": -7.768959,
         "longitude": 178.1167698,
-        "name": "TUVALU"
+        "name": "Tuvalu"
     },
     "TW": {
         "country_code": "TW",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 24.71378895,
-        "longitude": 121.114144420642,
-        "name": "TAIWAN, PROVINCE OF CHINA"
+        "language_code": "zh",
+        "latitude": 23.9739374,
+        "longitude": 120.9820179,
+        "name": "Taiwan"
     },
     "TZ": {
         "country_code": "TZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": -6.81257725,
-        "longitude": 39.2895041055514,
-        "name": "TANZANIA, UNITED REPUBLIC OF"
+        "language_code": "sw",
+        "latitude": -6.5247123,
+        "longitude": 35.7878438,
+        "name": "Tanzania"
     },
     "UA": {
         "country_code": "UA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "uk",
         "latitude": 49.4871968,
         "longitude": 31.2718321,
-        "name": "UKRAINE"
+        "name": "Ukraine"
     },
     "UG": {
         "country_code": "UG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 1.5333554,
         "longitude": 32.2166578,
-        "name": "UGANDA"
+        "name": "Uganda"
     },
     "UM": {
         "country_code": "UM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 6.4295092,
         "longitude": -162.407309878782,
-        "name": "UNITED STATES MINOR OUTLYING ISLANDS"
+        "name": "United States Minor Outlying Islands"
     },
     "US": {
         "country_code": "US",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 39.7837304,
         "longitude": -100.4458825,
-        "name": "UNITED STATES"
+        "name": "United States"
     },
     "UY": {
         "country_code": "UY",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": -32.8755548,
         "longitude": -56.0201525,
-        "name": "URUGUAY"
+        "name": "Uruguay"
     },
     "UZ": {
         "country_code": "UZ",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "uz",
         "latitude": 41.32373,
         "longitude": 63.9528098,
-        "name": "UZBEKISTAN"
+        "name": "Uzbekistan"
     },
     "VA": {
         "country_code": "VA",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 41.911,
-        "longitude": 12.452,
-        "name": "HOLY SEE (VATICAN CITY STATE)"
+        "language_code": "la",
+        "latitude": 41.9034912,
+        "longitude": 12.4528349,
+        "name": "Vatican"
     },
     "VC": {
         "country_code": "VC",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 12.90447,
         "longitude": -61.2765569,
-        "name": "SAINT VINCENT AND THE GRENADINES"
+        "name": "Saint Vincent and the Grenadines"
     },
     "VE": {
         "country_code": "VE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "es",
         "latitude": 8.0018709,
         "longitude": -66.1109318,
-        "name": "VENEZUELA, BOLIVARIAN REPUBLIC OF"
+        "name": "Venezuela"
     },
     "VG": {
         "country_code": "VG",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": 18.4024395,
         "longitude": -64.5661642,
-        "name": "VIRGIN ISLANDS, BRITISH"
+        "name": "British Virgin Islands"
     },
     "VI": {
         "country_code": "VI",
-        "language": "ENGLISH",
-        "language_code": "EN",
-        "latitude": 18.4024395,
-        "longitude": -64.5661642,
-        "name": "VIRGIN ISLANDS, U.S."
+        "language_code": "en",
+        "latitude": 17.789187,
+        "longitude": -64.7080574,
+        "name": "U.S. Virgin Islands"
     },
     "VN": {
         "country_code": "VN",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "vi",
         "latitude": 13.2904027,
         "longitude": 108.4265113,
-        "name": "VIET NAM"
+        "name": "Vietnam"
     },
     "VU": {
         "country_code": "VU",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "bi",
         "latitude": -16.5255069,
         "longitude": 168.1069154,
-        "name": "VANUATU"
+        "name": "Vanuatu"
     },
     "WF": {
         "country_code": "WF",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "wls",
         "latitude": -13.8173324,
         "longitude": -177.1489649,
-        "name": "WALLIS AND FUTUNA"
+        "name": "Wallis and Futuna"
     },
     "WS": {
         "country_code": "WS",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "sm",
         "latitude": -13.7693895,
         "longitude": -172.1200508,
-        "name": "SAMOA"
+        "name": "Samoa"
+    },
+    "XK": {
+        "country_code": "XK",
+        "language_code": "sq",
+        "latitude": 42.5625563,
+        "longitude": 20.9144458843568,
+        "name": "Kosovo"
     },
     "YE": {
         "country_code": "YE",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "ar",
         "latitude": 16.3471243,
         "longitude": 47.8915271,
-        "name": "YEMEN"
+        "name": "Yemen"
     },
     "YT": {
         "country_code": "YT",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "fr",
         "latitude": -12.823048,
         "longitude": 45.1520755,
-        "name": "MAYOTTE"
+        "name": "Mayotte"
     },
     "ZA": {
         "country_code": "ZA",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "zu",
         "latitude": -28.8166236,
         "longitude": 24.991639,
-        "name": "SOUTH AFRICA"
+        "name": "South Africa"
     },
     "ZM": {
         "country_code": "ZM",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -14.5186239,
         "longitude": 27.5599164,
-        "name": "ZAMBIA"
+        "name": "Zambia"
     },
     "ZW": {
         "country_code": "ZW",
-        "language": "ENGLISH",
-        "language_code": "EN",
+        "language_code": "en",
         "latitude": -18.4554963,
         "longitude": 29.7468414,
-        "name": "ZIMBABWE"
+        "name": "Zimbabwe"
     }
 }
