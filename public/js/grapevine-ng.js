@@ -53,15 +53,13 @@
 				}
 			}
 
-
-			
-
 			var socket = io.connect('http://127.0.0.1:8081');
 			//$scope.socket=socket;
 			var that = this;
 			var displaySelectionAlert;
 			$scope.loaded=false;
 			$scope.numChecked=0;
+			$scope.news=[];
 
 			socket.on('ack', function (data) {
 
@@ -149,12 +147,14 @@
 			});
 			$scope.displaySearch=true;
 
+
 			$scope.go = function(query) {
 				$scope.displaySearch = false;
 				$scope.displaySelectionAlert=false;
 				var data = {};
 				data.search_query = query;
 				data.countries = Object.keys(that.countries).filter(function(country){ return that.countries[country].checked; });
+				$scope.$apply(function(){ that.news=[]; });
 				socket.emit('search', data);
 			};
 
@@ -168,9 +168,7 @@
 			}
 
 			socket.on('news', function(news) {
-				if(!that.news){
-					$scope.$apply(function(){ that.news = []; });
-				}
+				console.log(news);
 				$scope.$apply(function(){ that.news.push(news); });
 				$scope.loaded = true;
 			});

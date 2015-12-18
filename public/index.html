@@ -89,20 +89,19 @@
         <img src="img/preloader.gif"></img>
     </div>
     <div class="row" ng-hide="displaySearch">
-            <div ng-repeat="searchedCountry in socket.news" ng-class="columns()">
-            <div class="news-panel">
+            <div class="news-panel" ng-repeat="searchedCountry in socket.news" ng-class="columns()">
                 <div class="news-wrapper">
                     <h3 class="indent">{{titleCase(socket.countries[searchedCountry.country_code].name)}}</h3>
                     <div class="country-news">
                         <div ng-repeat="newsStory in searchedCountry['news']" class="news-story">
-                            <h4 ng-bind-html-unsafe='newsStory["title"]'></h4>
+                            <h4>{{newsStory["title"]}}</h4>
                             <p>{{newsStory["summary"]}}</p>
                         </div>
                     </div>
+                    <a ng-href=""></button>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script type="text/javascript" src="./js/leaflet.js"></script>
     <script type="text/javascript" src="./js/countries-map.js"></script>

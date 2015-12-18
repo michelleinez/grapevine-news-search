@@ -3,14 +3,15 @@ var https = require('https');
 var http = require('http');
 var socks = require('socksv5');
 var countries_json = require('./countries.json');
+var googleApiKey = require('./api_key.json');
 var exec = require('child_process').exec;
 var querystring = require('querystring');
 var striptags = require('striptags');
 var grapevine = {
 	countries: countries_json,
-	base_socks_port:9050,
+	base_socks_port: 9050,
 	base_control_port: 15000,
-	API_KEY: 'AIzaSyBfnsOwVWHgYMZeqILWCoUwjJyomzpsV_Y',
+	API_KEY: googleApiKey.key,
 
 	// setting this to true makes everything use a single tor instance on port 9050
 	debug: true,
