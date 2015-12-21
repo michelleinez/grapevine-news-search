@@ -31,12 +31,14 @@ grapevine.init(function(){
 			//data = JSON.parse(data);
 			var search_query = data.search_query;
 			var countries = data.countries;
+			var user_language = data.user_language;
 			console.log(search_query);
 			console.log(countries);		
+			console.log(user_language);
 			var grapes = function(i)
 			{
 				console.log("grapes(" + i + ")");
-				grapevine.simulate_country(search_query, countries[i], function(result){
+				grapevine.simulate_country(search_query, countries[i], user_language, function(result){
 					console.log('country simulated ' + countries[i]);
 					socket.emit('news', { country_code: countries[i], news: result });
 				});			

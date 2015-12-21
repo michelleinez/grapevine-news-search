@@ -190,10 +190,10 @@ var grapevine = {
 			console.error('Error: ' + e);
 		});
 	},
-	simulate_country: function(search_query, country_code, callback)
+	simulate_country: function(search_query, country_code, from_language, callback)
 	{
 		var that = this;
-		var from_language = 'en';
+		//var from_language = 'en';
 		var to_language = this.countries[country_code].language_code;
 		this.translate(search_query, from_language, to_language, function(result){
 			var translation = result;

@@ -152,8 +152,12 @@
 				$scope.displaySearch = false;
 				$scope.displaySelectionAlert=false;
 				var data = {};
+				var userLang = navigator.language || navigator.userLanguage;
 				data.search_query = query;
 				data.countries = Object.keys(that.countries).filter(function(country){ return that.countries[country].checked; });
+				data.user_language = userLang.split('-')[0];
+				
+				// FuzzyBuddha it doesn't like this line for some reason?
 				$scope.$apply(function(){ that.news=[]; });
 				socket.emit('search', data);
 			};
