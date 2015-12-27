@@ -14,6 +14,7 @@ var grapevine = {
 	API_KEY: googleApiKey.key,
 
 	// setting this to true makes everything use a single tor instance on port 9050
+  // instead of a different tor instance for each country
 	debug: true,
 	init: function(callback) {
 		if (this.debug) {
@@ -46,10 +47,10 @@ var grapevine = {
 			   		j++;
 			   		if (j >= Object.keys(that.countries).length)
 			   		{
-						callback();	
+						callback();
 			   		}
 			  	});
-			}	
+			}
 		});
 	},
 	//https call to google translate API
@@ -60,7 +61,7 @@ var grapevine = {
 
 		// URL encode the search string
 		search_query = querystring.escape(search_query);
-		
+
 		//console.log(search_query);
 		var httpOptions = {
 			host: 'www.googleapis.com',
@@ -96,7 +97,7 @@ var grapevine = {
 		// URL encode the search string
 		search_query = querystring.escape(search_query);
 		var torPort;
-		if (this.debug) 
+		if (this.debug)
 		{
 			torPort = 9050;
 		}
@@ -117,7 +118,7 @@ var grapevine = {
 		var httpOptions = {
 			host: 'ajax.googleapis.com',
 		  	port: 443,
-		  	path: '/ajax/services/search/news?v=1.0&q=' + search_query,	
+		  	path: '/ajax/services/search/news?v=1.0&q=' + search_query,
 		  	method: 'GET',
 	 		agent: new socks.HttpsAgent(socksConfig)
 		};
@@ -134,7 +135,7 @@ var grapevine = {
 				callback(response_json);
 //				consople.log(response_string);
 			});
-			response.on('error', function(err) { 
+			response.on('error', function(err) {
 				console.log('Error: ' + err);
 			});
 		});
@@ -144,7 +145,7 @@ var grapevine = {
 			console.error('Error: ' + e);
 		});
 	},
-	check_ip_for_country: function(country_code, callback) 
+	check_ip_for_country: function(country_code, callback)
 	{
 		var country = this.countries[country_code];
 		if (country === undefined) {
@@ -152,7 +153,7 @@ var grapevine = {
 			return;
 		}
 		// should derive torPort from country_code
-//		var torPort = 9050;	
+//		var torPort = 9050;
 		var torPort = country.socksPort;
 		var socksConfig = {
 		  proxyHost: '127.0.0.1',
@@ -164,7 +165,7 @@ var grapevine = {
 			// this is ip of "whatsmyip" server
 			host: '130.211.135.85',
 		  	port: 80,
-		  	path: '/',	
+		  	path: '/',
 		  	method: 'GET',
 	 		agent: new socks.HttpAgent(socksConfig)
 		};
@@ -180,7 +181,7 @@ var grapevine = {
 				var exit_node_country = json.country;
 				callback(exit_node_country.toLowerCase().trim(), country_code.toLowerCase().trim());
 			});
-			res.on('error', function(err) { 
+			res.on('error', function(err) {
 				console.log('Error: ' + err);
 			});
 		});
@@ -245,8 +246,8 @@ var grapevine = {
 //				console.log(news_stories);
 			});
 		});
-	}, 
-	shutdown : function (callback) 
+	},
+	shutdown : function (callback)
 	{
 		// kill all tor instances
 		exec('killall tor', function(error, stdout, stderr) {
@@ -254,7 +255,7 @@ var grapevine = {
 		   		console.log(error);
 		   		console.log(stderr);
 	   		}
-		});		
+		});
 		callback();
 
 	}

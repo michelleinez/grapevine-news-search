@@ -2,12 +2,12 @@
 	function(){
 		var app = angular.module('grapevine', ['ui.bootstrap']);
 
-		app.filter('html', ['$sce', function ($sce) { 
+		app.filter('html', ['$sce', function ($sce) {
 		    return function (text) {
 		        return $sce.trustAsHtml(text);
-		    };    
+		    };
 		}]);
-		
+
 		app.controller('SocketController', function($scope){
 
 			// create a map in the "map" div, set the view to a given place and zoom
@@ -125,13 +125,13 @@
 					}
 					else
 					{
-						$('#country_1').html(news_item);			
+						$('#country_1').html(news_item);
 					}
 				});
 */
 
 				$scope.$apply(function(){ that.countries = data; });
-				
+
 				//pin all of the countries on the map
 				for(country in that.countries){
 					that.countries[country]['marker'] = L.marker([that.countries[country].latitude, that.countries[country].longitude], {icon: markerIcon, title: that.countries[country]['name']});
@@ -156,9 +156,10 @@
 				data.search_query = query;
 				data.countries = Object.keys(that.countries).filter(function(country){ return that.countries[country].checked; });
 				data.user_language = userLang.split('-')[0];
-				
+
 				// FuzzyBuddha it doesn't like this line for some reason?
-				$scope.$apply(function(){ that.news=[]; });
+				//$scope.$apply(function(){ that.news=[]; });
+        that.news=[];
 				socket.emit('search', data);
 			};
 
