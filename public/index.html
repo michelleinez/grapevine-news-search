@@ -68,7 +68,7 @@
             <div class="row spacer">
                 <div class="col-xs-6 col-sm-9 col-xs-offset-3 text-center">
                     <div class="input-group">
-                        <input ng-model="searchQuery" type="text" class="form-control" placeholder="Search countries for...">
+                        <input ng-enter="go(searchQuery)" ng-model="searchQuery" type="text" class="form-control" placeholder="Search countries for...">
                         <span class="input-group-btn">
                                 <button ng-click="go(searchQuery)" class="btn btn-primary" type="button">Go!</button>
                         </span>
@@ -94,7 +94,11 @@
                     <h3 class="indent">{{titleCase(socket.countries[searchedCountry.country_code].name)}}</h3>
                     <div class="country-news">
                         <div ng-repeat="newsStory in searchedCountry['news']" class="news-story">
-                            <h4>{{newsStory["translated_title"]}}</h4>
+                            <a target="_blank" href="{{newsStory['url']}}">
+                                <h4>
+                                    {{newsStory["translated_title"]}}
+                                </h4>
+                            </a>
                             <p>{{newsStory["translated_summary"]}}</p>
                         </div>
                     </div>
