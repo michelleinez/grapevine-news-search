@@ -83,13 +83,17 @@ var grapevine = {
 				callback(translation);
 			});
 			response.on('error', function(err) {
-				console.log('Error: ' + err);
+				console.error('Error receiving translation api response: ' + err);
+        console.error('Trying again');
+        grapevine.translate(search_query, from_language, to_language, callback);
 			});
 		});
 		request.end();
 
 		request.on('error', function(e) {
-			console.error('Error: ' + e);
+			console.error('Error sending translation api request: ' + e);
+      console.error('Trying again');
+      grapevine.translate(search_query, from_language, to_language, callback);
 		});
 	},
 	// hit news api with search term, sending request thru appropriate tor instance
@@ -136,13 +140,13 @@ var grapevine = {
 //				consople.log(response_string);
 			});
 			response.on('error', function(err) {
-				console.log('Error: ' + err);
+				console.log('Error receiving news api response: ' + err);
 			});
 		});
 		request.end();
 
 		request.on('error', function(e) {
-			console.error('Error: ' + e);
+			console.error('Error sending news api request: ' + e);
 		});
 	},
 	check_ip_for_country: function(country_code, callback)
@@ -206,12 +210,12 @@ var grapevine = {
 				var results = result.responseData.results;
 				var translator = function(i)
 				{
-					that.translate(news_stories[i].summary, to_language, from_language, function(result){
-						news_stories[i].summary = xhtmlUnescape(result);
-						that.translate(news_stories[i].title, to_language, from_language, function(result){
-							news_stories[i].title = xhtmlUnescape(result);
-							console.log('news_stories[' + i + '] = ' + news_stories[i].title + ': ' + news_stories[i].summary);
-							if (++translated == news_stories.length)
+					that.translate(news_stories[i].untranslated_summary, to_language, from_language, function(result){
+						news_stories[i].translated_summary = xhtmlUnescape(result);
+						that.translate(news_stories[i].untranslated_title, to_language, from_language, function(result){
+							news_stories[i].translated_title = xhtmlUnescape(result);
+							console.log('news_stories[' + i + '] = ' + news_stories[i].translated_title + ': ' + news_stories[i].translated_summary);
+							if (++translated == results.length)
 							{
 								callback(news_stories);
 							}
@@ -230,16 +234,16 @@ var grapevine = {
 				for (var i = 0; i < results.length; i++)
 				{
 					var news_story = {
-						title: results[i].titleNoFormatting,
-						summary: results[i].content,
+						untranslated_title: results[i].titleNoFormatting,
+						untranslated_summary: results[i].content,
 						url: results[i].unescapedUrl
 					};
 					if (results[i].image) {
-						news_story.imageUrl = results[i].image.tbUrl;
+						news_story.image_url = results[i].image.tbUrl;
 					}
 
-					news_story.summary = striptags(news_story.summary);
-					news_story.title = striptags(news_story.title);
+					news_story.untranslated_summary = striptags(news_story.untranslated_summary);
+					news_story.untranslated_title = striptags(news_story.untranslated_title);
 					news_stories.push(news_story);
 					translator(i);
 				}

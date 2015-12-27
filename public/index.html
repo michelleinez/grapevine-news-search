@@ -39,7 +39,7 @@
         <div ng-show="displaySearch" class="col-xs-12 text-center description">
             Search for news stories in other languages around the world. Choose a few countries and enter your query at the bottom of the page.
         </div>
-    
+
 
     <div class="row spacer" ng-show="displaySearch" ng-init="displaySearch=true">
         <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
@@ -94,8 +94,8 @@
                     <h3 class="indent">{{titleCase(socket.countries[searchedCountry.country_code].name)}}</h3>
                     <div class="country-news">
                         <div ng-repeat="newsStory in searchedCountry['news']" class="news-story">
-                            <h4>{{newsStory["title"]}}</h4>
-                            <p>{{newsStory["summary"]}}</p>
+                            <h4>{{newsStory["translated_title"]}}</h4>
+                            <p>{{newsStory["translated_summary"]}}</p>
                         </div>
                     </div>
                     <a ng-href=""></button>
