@@ -74,7 +74,6 @@
 			$scope.loaded=false;
 			$scope.numChecked=0;
       that.countries = {};
-      $scope.news = {};
 			that.news={};
       $scope.nextStoryIndex = {};
 
@@ -144,38 +143,31 @@
 			$scope.displaySearch=true;
 
 
-			$scope.go = function(query) {
+			$scope.go = function(query, country_code) {
 				$scope.displaySearch = false;
 				$scope.displaySelectionAlert=false;
 				var data = {};
 				var userLang = navigator.language || navigator.userLanguage;
 				data.search_query = query;
-				data.countries = Object.keys(that.countries).filter(function(country){ return that.countries[country].checked; });
+        if (country_code) {
+          data.countries = [country_code];
+        } else {
+          data.countries = Object.keys(that.countries).filter(function(country){ return that.countries[country].checked; });
+        }
 				data.user_language = userLang.split('-')[0];
-        for (var country in data.countries) {
-          $scope.nextStoryIndex[data.countries[country]] = 0;
-          that.news[data.countries[country]] = [];
+        for (var countryCode in data.countries) {
+          var country = data.countries[countryCode];
+          if (!$scope.nextStoryIndex.hasOwnProperty(country)) {
+            $scope.nextStoryIndex[country] = 0;
+          }
+          if (!that.news.hasOwnProperty(country)) {
+            that.news[country] = [];
+          }
         }
         data.result_start = $scope.nextStoryIndex;
 
-				// FuzzyBuddha it doesn't like this line for some reason?
-				//$scope.$apply(function(){ that.news=[]; });
-        //that.news=[];
-
 				socket.emit('search', data);
 			};
-
-      $scope.moreNews = function(country_code,query) {
-        $scope.nextStoryIndex[country_code] += 8;
-        if ($scope.nextStoryIndex[country_code] > 56) {
-          $scope.nextStoryIndex[country_code] = 56;
-        }
-        var data = {};
-        data.countries[0] = country_code;
-        data.search_query = query;
-        data.result_start = $scope.nextStoryIndex[country_code];
-        socket.emit('search', data);
-      }
 
 			//confused about this part...-Michelle
 			$scope.displayLoading = function() {
@@ -189,7 +181,12 @@
 			}
 
 			socket.on('news', function(news) {
-        that.news[news['country_code']] = that.news[news['country_code']].concat(news['news']);
+        var country_code = news['country_code'];
+        that.news[country_code] = that.news[country_code].concat(news['news']);
+        $scope.nextStoryIndex[country_code] += 8;
+        if ($scope.nextStoryIndex[country_code] > 56) {
+          $scope.nextStoryIndex[country_code] = 56;
+        }
 				$scope.$apply();
 				$scope.loaded = true;
 			});

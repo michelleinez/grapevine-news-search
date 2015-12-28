@@ -198,6 +198,11 @@ var grapevine = {
 	},
 	simulate_country: function(search_query, country_code, from_language, result_start, callback)
 	{
+    console.log('simulate_country');
+    console.log(search_query);
+    console.log(country_code);
+    console.log(from_language);
+    console.log(result_start);
 		var that = this;
 		//var from_language = 'en';
 		var to_language = this.countries[country_code].language_code;
