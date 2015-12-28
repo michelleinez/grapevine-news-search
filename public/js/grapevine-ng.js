@@ -2,6 +2,20 @@
 	function(){
 		var app = angular.module('grapevine', ['ui.bootstrap']);
 
+		app.directive('ngEnter', function() {
+	        return function(scope, element, attrs) {
+	            element.bind("keydown keypress", function(event) {
+	                if(event.which === 13) {
+	                    scope.$apply(function(){
+	                        scope.$eval(attrs.ngEnter, {'event': event});
+	                    });
+
+	                    event.preventDefault();
+	                }
+	            });
+	        };
+    	});
+
 		app.filter('html', ['$sce', function ($sce) {
 		    return function (text) {
 		        return $sce.trustAsHtml(text);
