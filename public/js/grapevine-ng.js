@@ -59,7 +59,10 @@
 			var displaySelectionAlert;
 			$scope.loaded=false;
 			$scope.numChecked=0;
-			$scope.news=[];
+      that.countries = {};
+      $scope.news = {};
+			that.news={};
+      $scope.nextStoryIndex = {};
 
 			socket.on('ack', function (data) {
 
@@ -78,7 +81,7 @@
 						$scope.displaySelectionAlert=false;
 					}
 					updateMarker(country);
-					return
+					return;
 				}
 
 				$scope.isChecked = function(country) {
@@ -135,12 +138,30 @@
 				data.search_query = query;
 				data.countries = Object.keys(that.countries).filter(function(country){ return that.countries[country].checked; });
 				data.user_language = userLang.split('-')[0];
+        for (var country in data.countries) {
+          $scope.nextStoryIndex[data.countries[country]] = 0;
+          that.news[data.countries[country]] = [];
+        }
+        data.result_start = $scope.nextStoryIndex;
 
 				// FuzzyBuddha it doesn't like this line for some reason?
 				//$scope.$apply(function(){ that.news=[]; });
-        that.news=[];
+        //that.news=[];
+
 				socket.emit('search', data);
 			};
+
+      $scope.moreNews = function(country_code,query) {
+        $scope.nextStoryIndex[country_code] += 8;
+        if ($scope.nextStoryIndex[country_code] > 56) {
+          $scope.nextStoryIndex[country_code] = 56;
+        }
+        var data = {};
+        data.countries[0] = country_code;
+        data.search_query = query;
+        data.result_start = $scope.nextStoryIndex[country_code];
+        socket.emit('search', data);
+      }
 
 			//confused about this part...-Michelle
 			$scope.displayLoading = function() {
@@ -148,19 +169,20 @@
 			}
 
 			$scope.titleCase = function(str){
-				return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        if (str) {
+  				return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        }
 			}
 
 			socket.on('news', function(news) {
-				console.log(news);
-				$scope.$apply(function(){ that.news.push(news); });
+        that.news[news['country_code']] = that.news[news['country_code']].concat(news['news']);
+				$scope.$apply();
 				$scope.loaded = true;
 			});
 
 			socket.on('error', function(err){
 				console.log("error: " + err);
 			});
-
 		});
 
 

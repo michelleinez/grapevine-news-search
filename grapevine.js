@@ -66,10 +66,11 @@ var grapevine = {
 		var httpOptions = {
 			host: 'www.googleapis.com',
 			port: 443,
-			path: '/language/translate/v2?key=' + this.API_KEY + '&source=' + from_language + '&target=' + to_language + '&q=' + search_query,
+//			path: '/language/translate/v2?key=' + this.API_KEY + '&source=' + from_language + '&target=' + to_language + '&q=' + search_query,
+			path: '/language/translate/v2?key=' + this.API_KEY + '&target=' + to_language + '&q=' + search_query,
 			method: 'GET'
 		};
-//		console.log(httpOptions.host + httpOptions.path);
+		console.log(httpOptions.host + httpOptions.path);
 
 		var request = https.request(httpOptions, function(response) {
 //			console.log("statusCode: ", res.statusCode);
@@ -97,7 +98,7 @@ var grapevine = {
 		});
 	},
 	// hit news api with search term, sending request thru appropriate tor instance
-	get_news_about: function(search_query, country_code, callback){
+	get_news_about: function(search_query, country_code, language_code, result_start, callback){
 		// URL encode the search string
 		search_query = querystring.escape(search_query);
 		var torPort;
@@ -122,11 +123,11 @@ var grapevine = {
 		var httpOptions = {
 			host: 'ajax.googleapis.com',
 		  	port: 443,
-		  	path: '/ajax/services/search/news?v=1.0&q=' + search_query,
+		  	path: '/ajax/services/search/news?v=1.0&ned=' + country_code + '&start=' + result_start + '&rsz=8&hl=' + language_code + '&q=' + search_query,
 		  	method: 'GET',
 	 		agent: new socks.HttpsAgent(socksConfig)
 		};
-//		console.log(httpOptions.host + httpOptions.path);
+		console.log(httpOptions.host + httpOptions.path);
 
 		var request = https.request(httpOptions, function(response) {
 			response.resume();
@@ -195,7 +196,7 @@ var grapevine = {
 			console.error('Error: ' + e);
 		});
 	},
-	simulate_country: function(search_query, country_code, from_language, callback)
+	simulate_country: function(search_query, country_code, from_language, result_start, callback)
 	{
 		var that = this;
 		//var from_language = 'en';
@@ -204,7 +205,7 @@ var grapevine = {
 			var translation = result;
 			//translation = querystring.escape(translation);
 			console.log(translation);
-			that.get_news_about(translation, country_code, function(result){
+			that.get_news_about(translation, country_code, to_language, result_start, function(result){
 				var news_stories = [];
 				var translated = 0;
 				var results = result.responseData.results;

@@ -32,16 +32,17 @@ grapevine.init(function(){
 			var search_query = data.search_query;
 			var countries = data.countries;
 			var user_language = data.user_language;
+      var result_start = data.result_start;
 			console.log(search_query);
-			console.log(countries);		
+			console.log(countries);
 			console.log(user_language);
+      console.log(result_start);
 			var grapes = function(i)
 			{
-				console.log("grapes(" + i + ")");
-				grapevine.simulate_country(search_query, countries[i], user_language, function(result){
+				grapevine.simulate_country(search_query, countries[i], user_language, result_start[countries[i]], function(result){
 					console.log('country simulated ' + countries[i]);
-					socket.emit('news', { country_code: countries[i], news: result });
-				});			
+					socket.emit('news', { country_code: countries[i], news: result, more: data.more });
+				});
 			};
 			for (var i = 0; i < countries.length; i++)
 			{
