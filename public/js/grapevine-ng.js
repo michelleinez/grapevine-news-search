@@ -70,12 +70,11 @@
 			var socket = io.connect('http://127.0.0.1:8081');
 			//$scope.socket=socket;
 			var that = this;
-			var displaySelectionAlert;
 			$scope.loaded=false;
 			$scope.numChecked=0;
-      that.countries = {};
+		    that.countries = {};
 			that.news={};
-      $scope.nextStoryIndex = {};
+	        $scope.nextStoryIndex = {};
 
 			socket.on('ack', function (data) {
 

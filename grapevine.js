@@ -39,17 +39,17 @@ var grapevine = {
 				var exitNode = '{' + key.toLowerCase() + '}';
 				var torCommand = 'tor --RunAsDaemon 1 --CookieAuthentication 0 --HashedControlPassword "" --ControlPort ' + controlPort + ' --PidFile ' + pidFilename + ' --SocksPort ' + socksPort + ' --DataDirectory ' + dataDirectory + ' --ExitNodes ' + exitNode;
 				i++;
-			   	exec(torCommand, function(error, stdout, stderr){
-			   		if (error) {
-				   		console.log(error);
-				   		//console.log(stderr);
-			   		}
-			   		j++;
-			   		if (j >= Object.keys(that.countries).length)
-			   		{
-						callback();
-			   		}
-			  	});
+        exec(torCommand, function(error, stdout, stderr){
+          if (error) {
+            console.log(error);
+            //console.log(stderr);
+          }
+          j++;
+          if (j >= Object.keys(that.countries).length)
+          {
+            callback();
+          }
+        });
 			}
 		});
 	},
@@ -80,7 +80,14 @@ var grapevine = {
 				response_string += d;
 			});
 			response.on('end', function() {
-				var translation = JSON.parse(response_string).data.translations[0].translatedText;
+				var translation;
+				var response_data = JSON.parse(response_string).data;
+				if (response_data) {
+					translation = response_data.translations[0].translatedText;
+				}
+				else {
+					translation = 'No translation available.';
+				}
 				callback(translation);
 			});
 			response.on('error', function(err) {
@@ -272,4 +279,4 @@ var grapevine = {
 };
 
 module.exports = grapevine;
-
+//99:37:9f:8d:d6:7b:5f:f0:3a:b1:f0:8c:71:bf:0a:d1
