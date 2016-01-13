@@ -41,6 +41,7 @@ var grapevine = {
 				i++;
 		        exec(torCommand, function(error, stdout, stderr){
 		          if (error) {
+		          	console.log('tor command failed: ' + torCommand);
 		            console.log(error);
 		            //console.log(stderr);
 		          } 
