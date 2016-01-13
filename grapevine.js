@@ -245,6 +245,7 @@ var grapevine = {
 					escapedXhtml = escapedXhtml.replace(/&lt;/g, '<');
 					escapedXhtml = escapedXhtml.replace(/&gt;/g, '>');
 					escapedXhtml = escapedXhtml.replace(/&#39;/g, "'");
+					escapedXhtml = escapedXhtml.replace(/&nbsp;/g, " ");
 
 					return escapedXhtml;
 				};
@@ -259,8 +260,8 @@ var grapevine = {
 						news_story.image_url = results[i].image.tbUrl;
 					}
 
-					news_story.untranslated_summary = striptags(news_story.untranslated_summary);
-					news_story.untranslated_title = striptags(news_story.untranslated_title);
+					news_story.untranslated_summary = xhtmlUnescape(striptags(news_story.untranslated_summary));
+					news_story.untranslated_title = xhtmlUnescape(striptags(news_story.untranslated_title));
 					news_stories.push(news_story);
 					translator(i);
 				}

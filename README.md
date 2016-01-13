@@ -16,7 +16,10 @@ brew install nodejs
 or
 apt-get install nodejs
 
-How to run:
+mkdir tor_data
+
+
+To run:
 nodejs grapevine_app.js
 
 

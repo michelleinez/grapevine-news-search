@@ -95,7 +95,7 @@
                     <div class="country-news" >
 
                         <div ng-repeat="newsStory in socket.news[key]" class="news-story">
-                            <a target="_blank" href="{{newsStory['url']}}">
+                            <a target="_blank" href="{{newsStory['url']}}" >
                                 <h4 ng-show="showTranslated">
                                     {{newsStory["translated_title"]}}
                                 </h4>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                    <a ng-click="go(searchQuery, key)"> More news </a>
+                    <a ng-click="go(searchQuery, key)" > More news </a>
                 </div>
             </div>
         </div>
