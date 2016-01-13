@@ -39,19 +39,22 @@ var grapevine = {
 				var exitNode = '{' + key.toLowerCase() + '}';
 				var torCommand = 'tor --RunAsDaemon 1 --CookieAuthentication 0 --HashedControlPassword "" --ControlPort ' + controlPort + ' --PidFile ' + pidFilename + ' --SocksPort ' + socksPort + ' --DataDirectory ' + dataDirectory + ' --ExitNodes ' + exitNode;
 				i++;
-        exec(torCommand, function(error, stdout, stderr){
-          if (error) {
-            console.log(error);
-            //console.log(stderr);
-          }
-          j++;
-          if (j >= Object.keys(that.countries).length)
-          {
-            callback();
-          }
-        });
-			}
-		});
+		        exec(torCommand, function(error, stdout, stderr){
+		          if (error) {
+		            console.log(error);
+		            //console.log(stderr);
+		          } 
+		          else {
+		          	console.log('Successfully connected via ' + torCommand.substring(torCommand.length - 3));
+		          }
+		          j++;
+		          if (j >= Object.keys(that.countries).length)
+		          {
+		            callback();
+		          }
+		        });
+					}
+				});
 	},
 	//https call to google translate API
 	translate: function(search_query, from_language, to_language, callback){
