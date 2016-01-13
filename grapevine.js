@@ -35,9 +35,9 @@ var grapevine = {
 				that.countries[key].controlPort = controlPort;
 
 				var pidFilename = 'tor' + i + '.pid';
-				var dataDirectory = 'data/tor' + i;
+				var dataDirectory = 'tor_data/tor' + i;
 				var exitNode = '{' + key.toLowerCase() + '}';
-				var torCommand = 'tor --RunAsDaemon 1 --CookieAuthentication 0 --HashedControlPassword "" --ControlPort ' + controlPort + ' --PidFile ' + pidFilename + ' --SocksPort ' + socksPort + ' --DataDirectory ' + dataDirectory + ' --ExitNodes ' + exitNode;
+				var torCommand = 'tor --RunAsDaemon 1 --PidFile ' + pidFilename + ' --SocksPort ' + socksPort + ' --DataDirectory ' + dataDirectory + ' --ExitNodes ' + exitNode;
 				i++;
 		        exec(torCommand, function(error, stdout, stderr){
 		          if (error) {
