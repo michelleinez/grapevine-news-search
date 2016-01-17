@@ -4,6 +4,8 @@
 }
 .news-story {
 	border-bottom: 1px solid #EEE;
+	height: 300px;
+	overflow: hidden;
 }
 .news-panel {
 	background-color: #EEE;

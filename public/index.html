@@ -76,7 +76,6 @@
                     <!-- /input-group -->
                 </div>
             </div>
-            {{countryInput}}
         </div>
     </div>
 
@@ -91,17 +90,17 @@
     <div class="row" ng-hide="displaySearch">
             <div class="news-panel" ng-repeat="(key, value) in socket.news" ng-class="columns()">
                 <div class="news-wrapper" ng-model="showTranslated" ng-init="showTranslated=true" ng-click="showTranslated=!showTranslated">
-                    <h3 class="indent">{{titleCase(socket.countries[key].name)}}</h3>
+                    <h4 class="indent">{{titleCase(socket.countries[key].name)}}</h4>
                     <div class="country-news" >
 
                         <div ng-repeat="newsStory in socket.news[key]" class="news-story">
                             <a target="_blank" href="{{newsStory['url']}}" >
-                                <h4 ng-show="showTranslated">
+                                <h5 ng-show="showTranslated">
                                     {{newsStory["translated_title"]}}
-                                </h4>
-                                <h4 ng-hide="showTranslated">
+                                </h5>
+                                <h5 ng-hide="showTranslated">
                                     {{newsStory["untranslated_title"]}}
-                                </h4>
+                                </h5>
                             </a>
                             <div ng-show="showTranslated" >
                                 <p>{{newsStory["translated_summary"]}}</p>

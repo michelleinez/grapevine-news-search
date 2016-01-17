@@ -67,7 +67,7 @@
 				}
 			}
 
-			var socket = io.connect('http://127.0.0.1:8081');
+			var socket = io.connect('http://' + self.location.host);
 			//$scope.socket=socket;
 			var that = this;
 			$scope.loaded=false;
