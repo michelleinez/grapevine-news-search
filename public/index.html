@@ -41,9 +41,9 @@
         </div>
 
 
-    <div class="row spacer" ng-show="displaySearch" ng-init="displaySearch=true">
+    <div class="row spacer" ng-init="displaySearch=true">
         <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
-            <div class="row spacer">
+            <div class="row spacer" ng-show="displaySearch">
                 <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-0">
                     <div class="country-input">
                         <input ng-change="updateList(countryInput)" type="text" ng-model="countryInput" class="form-control" placeholder="Country...">
@@ -65,7 +65,7 @@
                     <div id="map"></div>
                 </div>
             </div>
-            <div class="row spacer">
+            <div class="row spacer" >
                 <div class="col-xs-6 col-sm-9 col-xs-offset-3 text-center">
                     <div class="input-group">
                         <input ng-enter="go(searchQuery)" ng-model="searchQuery" type="text" class="form-control" placeholder="Search countries for...">
@@ -88,7 +88,7 @@
         <img src="img/preloader.gif"></img>
     </div>
     <div class="row" ng-hide="displaySearch">
-            <div class="news-panel" ng-repeat="(key, value) in socket.news" ng-class="columns()">
+            <div class="news-panel" ng-repeat="(key, value) in socket.news" ng-class="columns()" ng-show="socket.countries[key].checked">
                 <div class="news-wrapper" ng-model="showTranslated" ng-init="showTranslated=true" ng-click="showTranslated=!showTranslated">
                     <h4 class="indent">{{titleCase(socket.countries[key].name)}}</h4>
                     <div class="country-news" >
