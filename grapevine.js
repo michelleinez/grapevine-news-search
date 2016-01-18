@@ -7,6 +7,14 @@ var googleApiKey = require('./api_key.json');
 var exec = require('child_process').exec;
 var querystring = require('querystring');
 var striptags = require('striptags');
+var log4js = require('log4js');
+log4js.configure({
+  appenders: [
+//    { type: 'console' },
+    { type: 'file', filename: 'grapevine.log' }
+  ]
+});
+var logger = log4js.getLogger();
 var grapevine = {
 	countries: countries_json,
 	base_socks_port: 9050,
@@ -24,7 +32,8 @@ var grapevine = {
 		// kill all tor instances
 		exec('killall tor', function(error, stdout, stderr) {
 	   		if (error) {
-		   		//console.log(error);
+	   			logger.warn('No tor instances to kill');
+	   			logger.warn(error);
 	   		}
 			var i = 1;
 			var j = 0;
@@ -41,12 +50,11 @@ var grapevine = {
 				i++;
 		        exec(torCommand, function(error, stdout, stderr){
 		          if (error) {
-		          	console.log('tor command failed: ' + torCommand);
-		            console.log(error);
-		            //console.log(stderr);
+		          	logger.warn('tor command failed: ' + torCommand);
+		            logger.warn(error);
 		          } 
 		          else {
-		          	console.log('Successfully connected via ' + torCommand.substring(torCommand.length - 3));
+		          	logger.info('Successfully connected via ' + torCommand.substring(torCommand.length - 3));
 		          }
 		          j++;
 		          if (j >= Object.keys(that.countries).length)
@@ -66,7 +74,6 @@ var grapevine = {
 		// URL encode the search string
 		search_query = querystring.escape(search_query);
 
-		//console.log(search_query);
 		var httpOptions = {
 			host: 'www.googleapis.com',
 			port: 443,
@@ -74,11 +81,11 @@ var grapevine = {
 			path: '/language/translate/v2?key=' + this.API_KEY + '&target=' + to_language + '&q=' + search_query,
 			method: 'GET'
 		};
-		console.log(httpOptions.host + httpOptions.path);
+		logger.debug(httpOptions.host + httpOptions.path);
 
 		var request = https.request(httpOptions, function(response) {
-//			console.log("statusCode: ", res.statusCode);
-//			console.log("headers: ", res.headers);
+			logger.debug("statusCode: ", response.statusCode);
+			logger.debug("headers: ", response.headers);
 			var response_string = '';
 			response.on('data', function(d) {
 				response_string += d;
@@ -95,17 +102,18 @@ var grapevine = {
 				callback(translation);
 			});
 			response.on('error', function(err) {
-				console.error('Error receiving translation api response: ' + err);
-        console.error('Trying again');
-        grapevine.translate(search_query, from_language, to_language, callback);
+				logger.warn('Error receiving translation api response: ' + err);
+        		logger.warn('Trying again');
+        		logger.warn('Is google apis working?');
+        		grapevine.translate(search_query, from_language, to_language, callback);
 			});
 		});
 		request.end();
 
-		request.on('error', function(e) {
-			console.error('Error sending translation api request: ' + e);
-      console.error('Trying again');
-      grapevine.translate(search_query, from_language, to_language, callback);
+		request.on('error', function(err) {
+			logger.warn('Error sending translation api request: ' + err);
+	      	logger.warn('Trying again');
+      		grapevine.translate(search_query, from_language, to_language, callback);
 		});
 	},
 	// hit news api with search term, sending request thru appropriate tor instance
@@ -122,7 +130,7 @@ var grapevine = {
 			torPort = this.countries[country_code].socksPort;
 		}
 //		var torPort = 9050;
-//		console.log('getting news about ' + search_query + ' from country ' + country_code);
+		logger.info('getting news about ' + search_query + ' from country ' + country_code);
 
 		// tor config
 		var socksConfig = {
@@ -138,7 +146,7 @@ var grapevine = {
 		  	method: 'GET',
 	 		agent: new socks.HttpsAgent(socksConfig)
 		};
-		console.log(httpOptions.host + httpOptions.path);
+		logger.info(httpOptions.host + httpOptions.path);
 
 		var request = https.request(httpOptions, function(response) {
 			response.resume();
@@ -149,23 +157,29 @@ var grapevine = {
 			response.on('end', function() {
 				var response_json = JSON.parse(response_string);
 				callback(response_json);
-//				consople.log(response_string);
 			});
 			response.on('error', function(err) {
-				console.log('Error receiving news api response: ' + err);
+				logger.warn('Error receiving news api response: ' + err);
+				logger.warn('Trying again');
+        		logger.warn('Is google apis working?');
+        		get_news_about(search_query, country_code, language_code, result_start, callback);
 			});
 		});
 		request.end();
 
-		request.on('error', function(e) {
-			console.error('Error sending news api request: ' + e);
+		request.on('error', function(err) {
+			logger.warn('Error sending news api request: ' + err);
+			logger.warn('Trying again');
+    		logger.warn('Is google apis working?');
+    		get_news_about(search_query, country_code, language_code, result_start, callback);
+
 		});
 	},
 	check_ip_for_country: function(country_code, callback)
 	{
 		var country = this.countries[country_code];
 		if (country === undefined) {
-			console.error('No country found for country code: ' + country_code);
+			logger.error('No country found for country code: ' + country_code);
 			return;
 		}
 		// should derive torPort from country_code
@@ -198,29 +212,25 @@ var grapevine = {
 				callback(exit_node_country.toLowerCase().trim(), country_code.toLowerCase().trim());
 			});
 			res.on('error', function(err) {
-				console.log('Error: ' + err);
+				logger.warn('Error receiving response to request' + httpOptions);
+				logger.warn(err);
 			});
 		});
 		req.end();
 
-		req.on('error', function(e) {
-			console.error('Error: ' + e);
+		req.on('error', function(err) {
+			logger.warn('Error sending request' + httpOptions);
+			logger.warn(err);
 		});
 	},
 	simulate_country: function(search_query, country_code, from_language, result_start, callback)
 	{
-    console.log('simulate_country');
-    console.log(search_query);
-    console.log(country_code);
-    console.log(from_language);
-    console.log(result_start);
+	    logger.info('Searching ' + search_query + ' from ' + country_code);
 		var that = this;
-		//var from_language = 'en';
 		var to_language = this.countries[country_code].language_code;
 		this.translate(search_query, from_language, to_language, function(result){
 			var translation = result;
-			//translation = querystring.escape(translation);
-			console.log(translation);
+			logger.info(search_query + '-->' + translation);
 			that.get_news_about(translation, country_code, to_language, result_start, function(result){
 				var news_stories = [];
 				var translated = 0;
@@ -231,7 +241,7 @@ var grapevine = {
 						news_stories[i].translated_summary = xhtmlUnescape(result);
 						that.translate(news_stories[i].untranslated_title, to_language, from_language, function(result){
 							news_stories[i].translated_title = xhtmlUnescape(result);
-							console.log('news_stories[' + i + '] = ' + news_stories[i].translated_title + ': ' + news_stories[i].translated_summary);
+							//logger.info('news_stories[' + i + '] = ' + news_stories[i].translated_title + ': ' + news_stories[i].translated_summary);
 							if (++translated == results.length)
 							{
 								callback(news_stories);
@@ -265,7 +275,6 @@ var grapevine = {
 					news_stories.push(news_story);
 					translator(i);
 				}
-//				console.log(news_stories);
 			});
 		});
 	},
@@ -274,8 +283,8 @@ var grapevine = {
 		// kill all tor instances
 		exec('killall tor', function(error, stdout, stderr) {
 	   		if (error) {
-		   		console.log(error);
-		   		console.log(stderr);
+		   		logger.warn(error);
+		   		logger.warn(stderr);
 	   		}
 		});
 		callback();

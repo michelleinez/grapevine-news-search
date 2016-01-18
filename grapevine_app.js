@@ -23,7 +23,6 @@ grapevine.init(function(){
 
 	//socket is specific to each clients connection
 	io.on('connection', function (socket) {
-		console.log("received connection");
 		var search_query;
 		//when we receive search message, do function(data)
 		socket.on('search', function (data) {
@@ -32,15 +31,10 @@ grapevine.init(function(){
 			var search_query = data.search_query;
 			var countries = data.countries;
 			var user_language = data.user_language;
-      var result_start = data.result_start;
-			console.log(search_query);
-			console.log(countries);
-			console.log(user_language);
-      console.log(result_start);
+		    var result_start = data.result_start;
 			var grapes = function(i)
 			{
 				grapevine.simulate_country(search_query, countries[i], user_language, result_start[countries[i]], function(result){
-					console.log('country simulated ' + countries[i]);
 					socket.emit('news', { country_code: countries[i], news: result, more: data.more });
 				});
 			};
@@ -50,7 +44,7 @@ grapevine.init(function(){
 			}
 		});
 		socket.on('error', function (err) {
-			console.log("Error: " + err);
+			console.error("Error: " + err);
 		});
 
 		//send an ack message
