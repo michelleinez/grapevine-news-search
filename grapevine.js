@@ -8,9 +8,13 @@ var exec = require('child_process').exec;
 var querystring = require('querystring');
 var striptags = require('striptags');
 var log4js = require('log4js');
+var parser = require('xml2json');
+var cheerio = require('cheerio');
+var striptags = require('striptags');
+
 log4js.configure({
   appenders: [
-//    { type: 'console' },
+   // { type: 'console' },
     { type: 'file', filename: 'grapevine.log' }
   ]
 });
@@ -32,11 +36,13 @@ var grapevine = {
 		// kill all tor instances
 		exec('killall tor', function(error, stdout, stderr) {
 	   		if (error) {
-	   			logger.warn('No tor instances to kill');
-	   			logger.warn(error);
+                // rn('No tor instances to kill');
+                // rn(error);
 	   		}
 			var i = 1;
 			var j = 0;
+            console.log("that.countries: ");
+            console.log(that.countries);
 			for (key in that.countries) {
 				var socksPort = that.base_socks_port + i;
 				var controlPort = that.base_control_port + i;
@@ -50,11 +56,11 @@ var grapevine = {
 				i++;
 		        exec(torCommand, function(error, stdout, stderr){
 		          if (error) {
-		          	logger.warn('tor command failed: ' + torCommand);
-		            logger.warn(error);
-		          } 
+                    // warn('tor command failed: ' + torCommand);
+		            // logger.warn(error);
+		          }
 		          else {
-		          	logger.info('Successfully connected via ' + torCommand.substring(torCommand.length - 3));
+                    // info('Successfully connected via ' + torCommand.substring(torCommand.length - 3));
 		          }
 		          j++;
 		          if (j >= Object.keys(that.countries).length)
@@ -73,25 +79,28 @@ var grapevine = {
 
 		// URL encode the search string
 		search_query = querystring.escape(search_query);
-
 		var httpOptions = {
 			host: 'www.googleapis.com',
 			port: 443,
 //			path: '/language/translate/v2?key=' + this.API_KEY + '&source=' + from_language + '&target=' + to_language + '&q=' + search_query,
-			path: '/language/translate/v2?key=' + this.API_KEY + '&target=' + to_language + '&q=' + search_query,
+			path: '/language/translate/v2?key=' + this.API_KEY + '&q=' + search_query + '&source=' + from_language + '&target=' + to_language,
 			method: 'GET'
 		};
-		logger.debug(httpOptions.host + httpOptions.path);
+
+		logger.debug("translation path: ", httpOptions.host + httpOptions.path);
 
 		var request = https.request(httpOptions, function(response) {
+            // logger.debug("response data: ", response);
 			logger.debug("statusCode: ", response.statusCode);
-			logger.debug("headers: ", response.headers);
+			// logger.debug("headers: ", response.headers);
 			var response_string = '';
 			response.on('data', function(d) {
 				response_string += d;
+                // logger.debug('response_string: ', response_string);
 			});
 			response.on('end', function() {
 				var translation;
+                logger.info("response_string: ", response_string);
 				var response_data = JSON.parse(response_string).data;
 				if (response_data) {
 					translation = response_data.translations[0].translatedText;
@@ -104,15 +113,15 @@ var grapevine = {
 			response.on('error', function(err) {
 				logger.warn('Error receiving translation api response: ' + err);
         		logger.warn('Trying again');
-        		logger.warn('Is google apis working?');
+        		logger.warn('Is google translate working?');
         		grapevine.translate(search_query, from_language, to_language, callback);
 			});
 		});
 		request.end();
 
 		request.on('error', function(err) {
-			logger.warn('Error sending translation api request: ' + err);
-	      	logger.warn('Trying again');
+			// logger.warn('Error sending translation api request: ' + err);
+            // er.warn('Trying again');
       		grapevine.translate(search_query, from_language, to_language, callback);
 		});
 	},
@@ -130,7 +139,7 @@ var grapevine = {
 			torPort = this.countries[country_code].socksPort;
 		}
 //		var torPort = 9050;
-		logger.info('getting news about ' + search_query + ' from country ' + country_code);
+		// logger.info('getting news about ' + search_query + ' from country ' + country_code);
 
 		// tor config
 		var socksConfig = {
@@ -140,28 +149,31 @@ var grapevine = {
 		};
 		// request config
 		var httpOptions = {
-			host: 'ajax.googleapis.com',
+			host: 'news.google.com',
 		  	port: 443,
-		  	path: '/ajax/services/search/news?v=1.0&ned=' + country_code + '&start=' + result_start + '&rsz=8&hl=' + language_code + '&q=' + search_query,
-		  	method: 'GET',
+		  	// path: '/ajax/services/search/news?v=1.0&ned=' + country_code + '&start=' + result_start + '&rsz=8&hl=' + language_code + '&q=' + search_query,
+            path: '/news/feeds?pz=1&cf=all&ned='+language_code+'&hl='+country_code+'&q='+search_query+'&output=rss',
+            method: 'GET',
 	 		agent: new socks.HttpsAgent(socksConfig)
 		};
 		logger.info(httpOptions.host + httpOptions.path);
 
 		var request = https.request(httpOptions, function(response) {
+            logger.info('response.data = ', response.data);
 			response.resume();
 			var response_string = '';
 			response.on('data', function(d) {
 				response_string += d;
 			});
 			response.on('end', function() {
-				var response_json = JSON.parse(response_string);
-				callback(response_json);
+				// var response_json = JSON.parse(response_string);
+                // logger.info("response_string: ", response_string);
+				callback(response_string);
 			});
 			response.on('error', function(err) {
 				logger.warn('Error receiving news api response: ' + err);
 				logger.warn('Trying again');
-        		logger.warn('Is google apis working?');
+        		logger.warn('Is google news apis working?');
         		get_news_about(search_query, country_code, language_code, result_start, callback);
 			});
 		});
@@ -179,7 +191,7 @@ var grapevine = {
 	{
 		var country = this.countries[country_code];
 		if (country === undefined) {
-			logger.error('No country found for country code: ' + country_code);
+			// logger.error('No country found for country code: ' + country_code);
 			return;
 		}
 		// should derive torPort from country_code
@@ -225,17 +237,31 @@ var grapevine = {
 	},
 	simulate_country: function(search_query, country_code, from_language, result_start, callback)
 	{
-	    logger.info('Searching ' + search_query + ' from ' + country_code);
+	    // logger.info('Searching ' + search_query + ' from ' + country_code);
 		var that = this;
 		var to_language = this.countries[country_code].language_code;
+        console.log("to_language", to_language);
 		this.translate(search_query, from_language, to_language, function(result){
 			var translation = result;
 			logger.info(search_query + '-->' + translation);
 			that.get_news_about(translation, country_code, to_language, result_start, function(result){
 				var news_stories = [];
 				var translated = 0;
-				var results = result.responseData.results;
-				var translator = function(i)
+                // console.log("result = ", result);
+                var news_xml = result;
+                var news_json = parser.toJson(news_xml);
+                for(idx in JSON.parse(news_json).rss.channel.item){
+                    logger.info("idx = ", idx);
+                    var xml_news_description = JSON.parse(news_json).rss.channel.item[idx].description.split('<font size="-1">');
+                    news_stories[idx] = {};
+                    news_stories[idx].untranslated_title = JSON.parse(news_json).rss.channel.item[idx].title;
+                    news_stories[idx].link = JSON.parse(news_json).rss.channel.item[idx].link;
+                    news_stories[idx].source = striptags(xml_news_description[1]);
+                    news_stories[idx].untranslated_summary = striptags(xml_news_description[2]);
+                    logger.info(news_stories[idx]);
+                }
+
+                var translator = function(i)
 				{
 					that.translate(news_stories[i].untranslated_summary, to_language, from_language, function(result){
 						news_stories[i].translated_summary = xhtmlUnescape(result);
@@ -249,7 +275,8 @@ var grapevine = {
 						});
 					});
 				};
-				var xhtmlUnescape = function(escapedXhtml) {
+
+                var xhtmlUnescape = function(escapedXhtml) {
 					escapedXhtml = escapedXhtml.replace(/&quot;/g, '"');
 					escapedXhtml = escapedXhtml.replace(/&amp;/g, '&');
 					escapedXhtml = escapedXhtml.replace(/&lt;/g, '<');
@@ -259,32 +286,42 @@ var grapevine = {
 
 					return escapedXhtml;
 				};
-				for (var i = 0; i < results.length; i++)
-				{
-					var news_story = {
-						untranslated_title: results[i].titleNoFormatting,
-						untranslated_summary: results[i].content,
-						url: results[i].unescapedUrl
-					};
-					if (results[i].image) {
-						news_story.image_url = results[i].image.tbUrl;
-					}
 
-					news_story.untranslated_summary = xhtmlUnescape(striptags(news_story.untranslated_summary));
-					news_story.untranslated_title = xhtmlUnescape(striptags(news_story.untranslated_title));
-					news_stories.push(news_story);
-					translator(i);
-				}
-			});
-		});
+            });
+        });
+
+
+
+
+		// 		var results = result;
+
+
+		// 		for (var i = 0; i < results.length; i++)
+		// 		{
+		// 			var news_story = {
+		// 				untranslated_title: results[i].titleNoFormatting,
+		// 				untranslated_summary: results[i].content,
+		// 				url: results[i].unescapedUrl
+		// 			};
+		// 			if (results[i].image) {
+		// 				news_story.image_url = results[i].image.tbUrl;
+		// 			}
+        //
+		// 			news_story.untranslated_summary = xhtmlUnescape(striptags(news_story.untranslated_summary));
+		// 			news_story.untranslated_title = xhtmlUnescape(striptags(news_story.untranslated_title));
+		// 			news_stories.push(news_story);
+		// 			translator(i);
+		// 		}
+		// 	});
+		// });
 	},
 	shutdown : function (callback)
 	{
 		// kill all tor instances
 		exec('killall tor', function(error, stdout, stderr) {
 	   		if (error) {
-		   		logger.warn(error);
-		   		logger.warn(stderr);
+                // rn(error);
+                // rn(stderr);
 	   		}
 		});
 		callback();

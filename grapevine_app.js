@@ -10,10 +10,10 @@ var server = require('http').Server(app);
 //any socket made with socket io library will be bound to the server
 var io = require('socket.io')(server);
 
-var port = 8081;
-//listens on localhost:8081 for event emissions
+var port = 8091;
+//listens on localhost:8091 for event emissions
 server.listen(port);
-console.log('listening on port ' + port);
+console.log('listening on port ' + 8091);
 
 var grapevine = require('./grapevine');
 //define the init function
@@ -24,14 +24,20 @@ grapevine.init(function(){
 	//socket is specific to each clients connection
 	io.on('connection', function (socket) {
 		var search_query;
+
+		console.log("search_query:", search_query);
+
 		//when we receive search message, do function(data)
 		socket.on('search', function (data) {
 
 			//data = JSON.parse(data);
 			var search_query = data.search_query;
+			console.log("search_query:",search_query)
 			var countries = data.countries;
 			var user_language = data.user_language;
+			console.log("user_language:",user_language)
 		    var result_start = data.result_start;
+			// console.log("result_start:",result_start)
 			var grapes = function(i)
 			{
 				grapevine.simulate_country(search_query, countries[i], user_language, result_start[countries[i]], function(result){
@@ -40,6 +46,7 @@ grapevine.init(function(){
 			};
 			for (var i = 0; i < countries.length; i++)
 			{
+				console.log(i, " ", search_query, " ", countries[i], " ", user_language, " ", result_start[countries[i]])
 				grapes(i);
 			}
 		});
