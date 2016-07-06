@@ -75,8 +75,8 @@
 			var that = this;
 
 			function resetNewsObjects() {
-				that.news = {};	
-				$scope.nextStoryIndex = {};				
+				that.news = {};
+				$scope.nextStoryIndex = {};
 			}
 
 			$scope.loaded = false;
@@ -178,7 +178,7 @@
 				}
 				// get the user's browser language
 				data.user_language = userLang.split('-')[0];
-				
+
 				// 
 				for (var countryCode in data.countries) {
 					var country = data.countries[countryCode];

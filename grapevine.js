@@ -68,8 +68,8 @@ var grapevine = {
 		            callback();
 		          }
 		        });
-					}
-				});
+			}
+		});
 	},
 	//https call to google translate API
 	translate: function(search_query, from_language, to_language, callback){
@@ -87,11 +87,11 @@ var grapevine = {
 			method: 'GET'
 		};
 
-		logger.debug("translation path: ", httpOptions.host + httpOptions.path);
+		// logger.debug("translation path: ", httpOptions.host + httpOptions.path);
 
 		var request = https.request(httpOptions, function(response) {
             // logger.debug("response data: ", response);
-			logger.debug("statusCode: ", response.statusCode);
+			// logger.debug("statusCode: ", response.statusCode);
 			// logger.debug("headers: ", response.headers);
 			var response_string = '';
 			response.on('data', function(d) {
@@ -100,7 +100,7 @@ var grapevine = {
 			});
 			response.on('end', function() {
 				var translation;
-                logger.info("response_string: ", response_string);
+                // logger.info("response_string: ", response_string);
 				var response_data = JSON.parse(response_string).data;
 				if (response_data) {
 					translation = response_data.translations[0].translatedText;
@@ -239,6 +239,7 @@ var grapevine = {
 	{
 	    // logger.info('Searching ' + search_query + ' from ' + country_code);
 		var that = this;
+        var sim_country_callback = callback;
 		var to_language = this.countries[country_code].language_code;
         console.log("to_language", to_language);
 		this.translate(search_query, from_language, to_language, function(result){
@@ -251,30 +252,13 @@ var grapevine = {
                 var news_xml = result;
                 var news_json = parser.toJson(news_xml);
                 for(idx in JSON.parse(news_json).rss.channel.item){
-                    logger.info("idx = ", idx);
                     var xml_news_description = JSON.parse(news_json).rss.channel.item[idx].description.split('<font size="-1">');
                     news_stories[idx] = {};
                     news_stories[idx].untranslated_title = JSON.parse(news_json).rss.channel.item[idx].title;
                     news_stories[idx].link = JSON.parse(news_json).rss.channel.item[idx].link;
                     news_stories[idx].source = striptags(xml_news_description[1]);
                     news_stories[idx].untranslated_summary = striptags(xml_news_description[2]);
-                    logger.info(news_stories[idx]);
                 }
-
-                var translator = function(i)
-				{
-					that.translate(news_stories[i].untranslated_summary, to_language, from_language, function(result){
-						news_stories[i].translated_summary = xhtmlUnescape(result);
-						that.translate(news_stories[i].untranslated_title, to_language, from_language, function(result){
-							news_stories[i].translated_title = xhtmlUnescape(result);
-							//logger.info('news_stories[' + i + '] = ' + news_stories[i].translated_title + ': ' + news_stories[i].translated_summary);
-							if (++translated == results.length)
-							{
-								callback(news_stories);
-							}
-						});
-					});
-				};
 
                 var xhtmlUnescape = function(escapedXhtml) {
 					escapedXhtml = escapedXhtml.replace(/&quot;/g, '"');
@@ -283,37 +267,43 @@ var grapevine = {
 					escapedXhtml = escapedXhtml.replace(/&gt;/g, '>');
 					escapedXhtml = escapedXhtml.replace(/&#39;/g, "'");
 					escapedXhtml = escapedXhtml.replace(/&nbsp;/g, " ");
-
 					return escapedXhtml;
 				};
+
+                var add_translations = function(news_stories, callback){
+                    var news = [];
+                    //for each news story
+                    for(idx in news_stories){
+                        var translated = 0;
+                        translator(idx, function(result){
+                            news.push(result);
+                            if(++translated==idx){
+                                callback(news);
+                            }
+                        });
+                    }
+                }
+
+                var translator = function(idx, callback){
+                    that.translate(news_stories[idx].untranslated_summary, to_language, from_language, function(result){
+                        news_stories[idx].translated_summary = xhtmlUnescape(result);
+                        that.translate(news_stories[idx].untranslated_title, to_language, from_language, function(result){
+                            news_stories[idx].translated_title = xhtmlUnescape(result);
+                            callback(news_stories[idx]);
+                        });
+                    });
+                }
+
+                //add translated versions into news stories
+                add_translations(news_stories, function(news){
+                    logger.info("hello hello line 300 news_stories...", news);
+                    // grapevine.news_stories = news_stories;
+                    callback(news);
+                });
 
             });
         });
 
-
-
-
-		// 		var results = result;
-
-
-		// 		for (var i = 0; i < results.length; i++)
-		// 		{
-		// 			var news_story = {
-		// 				untranslated_title: results[i].titleNoFormatting,
-		// 				untranslated_summary: results[i].content,
-		// 				url: results[i].unescapedUrl
-		// 			};
-		// 			if (results[i].image) {
-		// 				news_story.image_url = results[i].image.tbUrl;
-		// 			}
-        //
-		// 			news_story.untranslated_summary = xhtmlUnescape(striptags(news_story.untranslated_summary));
-		// 			news_story.untranslated_title = xhtmlUnescape(striptags(news_story.untranslated_title));
-		// 			news_stories.push(news_story);
-		// 			translator(i);
-		// 		}
-		// 	});
-		// });
 	},
 	shutdown : function (callback)
 	{
@@ -325,7 +315,6 @@ var grapevine = {
 	   		}
 		});
 		callback();
-
 	}
 };
 

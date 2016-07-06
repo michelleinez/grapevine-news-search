@@ -20,40 +20,38 @@
 <body ng-app="grapevine" ng-controller="SocketController as socket">
     <div class="container">
         <div class="row">
-            <div class="col-xs-2">
-                <a href="/"><img class="gv-logo" src="img/grapevineLogo.png"></a>
-            </div>
-            <div class="col-xs-9 col-xs-offset-1">
-                <ul class="country-tags">
-                    <li>
-                        <a href="#" ng-show="country.checked" ng-repeat="country in socket.countries" ng-model="socket.countries" class="country-tag" ng-click="countryClick(country)">
-                            <i class="fa fa-times"></i> {{country.name}}
-                        </a>
-                    </li>
-                </ul>
+            <div class="col-xs-12 text-center">
+                <a href="/"><button ng-hide="displaySearch" class="btn btn-primary" style="float:left; margin-top: 35px;"><< Back</button></a>
+                <h1 class="grapevine-header">GRAPEVINE NEWS SEARCH</h1>
             </div>
         </div>
         <div class="row">
             <hr>
         </div>
-        <div ng-show="displaySearch" class="col-xs-12 text-center description">
-            Search for news stories in other languages around the world. Choose a few countries and enter your query at the bottom of the page.
+        <div class="col-xs-9 col-xs-offset-1">
+            <ul class="country-tags">
+                <li>
+                    <a href="#" ng-show="country.checked" ng-repeat="country in socket.countries" ng-model="socket.countries" class="country-tag" ng-click="countryClick(country)">
+                        <i class="fa fa-times"></i> {{country.name}}
+                    </a>
+                </li>
+            </ul>
         </div>
 
 
     <div class="row spacer" ng-init="displaySearch=true">
         <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
-            <div class="row spacer" ng-show="displaySearch">
+            <div class="row spacer no-gutters" ng-show="displaySearch">
                 <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-0">
                     <div class="country-input">
-                        <input ng-change="updateList(countryInput)" type="text" ng-model="countryInput" class="form-control" placeholder="Country...">
+                        <input ng-change="updateList(countryInput)" type="text" ng-model="countryInput" class="form-control" placeholder="Type a country...">
                     </div>
                     <div class="country-list" id="country_list">
                         <div>
                             <ul ng-show="country.display" ng-init="country.display=true" ng-repeat="country in socket.countries" ng-model="socket.countries" class="list-group">
                                 <li ng-click="countryClick(country)" ng-init="country.checked=false" class="list-group-item inline">
                                     <i ng-class="isChecked(country)"></i>
-                                    <label class="country-names">
+                                    <label class="country-names" ng-cloak>
                                         {{country.name}}
                                     </label>
                                 </li>
@@ -67,7 +65,7 @@
             </div>
             <div class="row spacer" >
                 <div class="col-xs-6 col-sm-9 col-xs-offset-3 text-center">
-                    <div class="input-group">
+                    <div class="searchbar input-group">
                         <input ng-enter="go(searchQuery)" ng-model="searchQuery" type="text" class="form-control" placeholder="Search countries for...">
                         <span class="input-group-btn">
                                 <button ng-click="go(searchQuery)" class="btn btn-primary" type="button">Go!</button>
@@ -81,24 +79,25 @@
 
     <a href="#">
         <div ng-click="displaySelectionAlert=!displaySelectionAlert" ng-init="displaySelectionAlert=false" ng-show="displaySelectionAlert" class="country-selection-alert">
-            <i class="fa fa-times fa-lg"></i>    Sorry, grapevine currently only supports three countries at a time.
+            <i class="fa fa-times fa-lg"></i> Sorry, grapevine currently only supports three countries at a time.
         </div>
     </a>
     <div ng-class="text-center" class="loading-spinner" ng-show="displayLoading()">
         <img src="img/preloader.gif"></img>
     </div>
-    <div class="row" ng-hide="displaySearch">
+    <div class="row" ng-hide="displayLoading()">
             <div class="news-panel" ng-repeat="(key, value) in socket.news" ng-class="columns()" ng-show="socket.countries[key].checked">
-                <div class="news-wrapper" ng-model="showTranslated" ng-init="showTranslated=true" ng-click="showTranslated=!showTranslated">
-                    <h4 class="indent">{{titleCase(socket.countries[key].name)}}</h4>
+                <div class="news-wrapper">
+                    <h4 class="indent article-country-name">{{titleCase(socket.countries[key].name)}}</h4>
                     <div class="country-news" >
 
-                        <div ng-repeat="newsStory in socket.news[key]" class="news-story">
-                            <a target="_blank" href="{{newsStory['url']}}" >
-                                <h5 ng-show="showTranslated">
+                        <div ng-repeat="newsStory in socket.news[key]" class="news-story" ng-model="showTranslated" ng-init="showTranslated=true">
+
+                            <a target="_blank" href="{{newsStory['link']}}" >
+                                <h5 class="article-headline" ng-show="showTranslated">
                                     {{newsStory["translated_title"]}}
                                 </h5>
-                                <h5 ng-hide="showTranslated">
+                                <h5 class="article-headline" ng-hide="showTranslated">
                                     {{newsStory["untranslated_title"]}}
                                 </h5>
                             </a>
@@ -108,9 +107,11 @@
                             <div ng-hide="showTranslated">
                                 <p>{{newsStory["untranslated_summary"]}}</p>
                             </div>
+                            <button ng-show="showTranslated" ng-click="showTranslated=!showTranslated">Show Original</button>
+                            <button ng-hide="showTranslated" ng-click="showTranslated=!showTranslated">Show Translation</button>
                         </div>
                     </div>
-                    <a ng-click="go(searchQuery, key)" > More news </a>
+                    <!-- <a ng-click="go(searchQuery, key)" > More news </a> -->
                 </div>
             </div>
         </div>
